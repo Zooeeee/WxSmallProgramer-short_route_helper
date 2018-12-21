@@ -1,0 +1,15 @@
+.top{
+    border: 1px solid #000000;
+    text-align:center
+}
+.defaultCity{
+    font-size: 50rpx;
+}
+.select{
+    display: flex;
+    flex-wrap:nowrap;
+    border: 1px solid #000000;
+}
+.input{
+    border: 1px solid #000000;
+}

@@ -1,0 +1,15 @@
+appid:
+wx27c88850a98514b4
+
+
+车联网ak：w65uwmj5P2rqqpGv8iunSyyKgLke1bZo
+
+天气：
+https://api.map.baidu.com/telematics/v3/weather?output=json&ak=1a3cde429f38434f1811a75e1a90310c&location=%E6%AD%A6%E6%B1%89
+
+旅游规划：
+http://api.map.baidu.com/telematics/v3/travel_city?day=all&location=北京&output=json&ak=w65uwmj5P2rqqpGv8iunSyyKgLke1bZo
+
+景点检索:
+http://api.map.baidu.com/telematics/v3/point?&tag=生活服务&keyWord=江汉路&output=json&cityName=武汉&ak=w65uwmj5P2rqqpGv8iunSyyKgLke1bZo
+tag = 生活服务 休闲娱乐 运动健身 旅游景点  自然地物 美食 宾馆 购物 汽车服务 运动健身 医疗 交通设施

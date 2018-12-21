@@ -1,0 +1,50 @@
+/* pages/prediction/prediction.wxss */
+.page{
+    margin: 20rpx 30rpx 0rpx 30rpx ;
+    padding: 0;
+    border: 1px solid #000000;
+    
+}
+.container1{
+    display: flex;
+    height: 200rpx;
+    border: 1px solid #000000;
+}
+
+.container2{
+    height: 280rpx;
+    border: 1px solid #000000;
+}
+
+.container3{
+    display: flex;
+    height: 250rpx;
+    border: 1px solid #000000;
+}
+
+.container4{
+    display: flex;
+    margin-top: 60rpx;
+    height: 150rpx;
+    border: 1px solid #000000;
+}
+
+.container5{
+    display: flex;
+    height: 150rpx;
+    border: 1px solid #000000;
+}
+.textCenter{
+    text-align: center;
+}
+
+.dayTop{
+    width: 25%;
+    height: 100%;
+    border: 1px solid #000000;
+}
+
+.advice{
+    width: 100%;
+    border: 1px solid #000000;
+}

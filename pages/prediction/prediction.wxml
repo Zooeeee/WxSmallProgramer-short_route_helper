@@ -1,0 +1,68 @@
+ <!--pages/prediction/prediction.wxml-->
+<view class = "page">
+    <!--这是第二页面的第一部分-->
+    <view class = "container1" >
+        <view class = "dayTop textCenter" >
+            <view>{{dates[0].weekday}}</view>
+            <view>{{dates[0].day}}日</view>
+            <view>{{temps[0].max}}</view>
+        </view>
+         <view class = "dayTop textCenter" >
+            <view>{{dates[1].weekday}}</view>
+            <view>{{dates[1].day}}日</view>
+            <view>{{temps[1].max}}</view>
+         </view> 
+         <view class = "dayTop textCenter" >
+            <view>{{dates[2].weekday}}</view>
+            <view>{{dates[2].day}}日</view>
+            <view>{{temps[2].max}}</view>    
+         </view>
+         <view class = "dayTop textCenter" >
+            <view>{{dates[3].weekday}}</view>
+            <view>{{dates[3].day}}日</view>
+            <view>{{temps[3].max}}</view>
+         </view>
+    </view> 
+    <!--这是第二页面的第一部分-->
+    <view class = "container2">
+        <text>折线图：待完成</text>
+    </view>
+     <!--这是第二页面的第二部分-->
+    <view class = "container3">
+        <view class = "dayTop textCenter" >
+            <view>{{temps[0].min}}</view>
+            <view>{{weathers[0]}}</view>
+            <view>{{winds[0]}}</view>
+        </view>
+        <view class = "dayTop textCenter" >
+            <view>{{temps[1].min}}</view>
+            <view>{{weathers[1]}}</view>
+            <view>{{winds[1]}}</view>
+        </view>
+        <view class = "dayTop textCenter" >
+            <view>{{temps[2].min}}</view>
+            <view>{{weathers[2]}}</view>
+            <view>{{winds[2]}}</view>
+        </view>
+        <view class = "dayTop textCenter" >
+            <view>{{temps[3].min}}</view>
+            <view>{{weathers[3]}}</view>
+            <view>{{winds[3]}}</view>
+        </view>
+    </view>
+    <!--这是第二页面的第三部分-->
+    <view class = "container4">
+        <view class = "advice">{{titles[0]}}</view>
+        <view class = "advice">{{titles[2]}}</view>
+        <view class = "advice">{{titles[3]}}</view>
+        <view class = "advice">{{titles[4]}}</view>
+    </view>
+    <!--这是第二页面的第四部分-->
+     <view class = "container5">
+        <view class = "advice" id = "0" bindtap='clickHelp'>{{zss[0]}}</view>
+        <view class = "advice" id = "2" bindtap='clickHelp'>{{zss[2]}}</view>
+        <view class = "advice" id = "3" bindtap='clickHelp'>{{zss[3]}}</view>
+        <view class = "advice" id = "4" bindtap='clickHelp'>{{zss[4]}}</view>
+    </view>
+    <!--这是第二页面的第五部分-->
+</view>

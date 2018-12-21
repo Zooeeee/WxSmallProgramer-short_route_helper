@@ -1,0 +1,48 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/user/user",
+        "pages/place/place",
+        "pages/search/search",
+        "pages/test/test",                   
+        "pages/selectCity/selectCity",
+        "pages/prediction/prediction"
+      
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "短程助手",
+        "backgroundColor": "#ff00ff",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/place/place",
+                "text": "计划",
+                "iconPath": "img/tarBar/place.png",
+                "selectedIconPath": "img/tarBar/place-select.png"
+            },
+            {
+                "pagePath": "pages/search/search",
+                "text": "搜索",
+                "iconPath": "img/tarBar/search.png",
+                "selectedIconPath": "img/tarBar/search-select.png"
+            },
+            {
+                "pagePath": "pages/prediction/prediction",
+                "text": "近期预测",
+                "iconPath": "img/tarBar/预测.png",
+                "selectedIconPath": "img/tarBar/预测-select.png"
+            },
+            {
+                "pagePath": "pages/user/user",
+                "text": "个人",
+                "iconPath": "img/tarBar/个人.png",
+                "selectedIconPath": "img/tarBar/个人-select.png"
+            }
+        ]
+    }
+}

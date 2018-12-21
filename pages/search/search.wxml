@@ -1,0 +1,18 @@
+<!--pages/search/search.wxml-->
+<view class = "top">
+    <view class = "defaultCity">当前城市:{{defaultCity}}</view>
+</view>
+<view class = "select">
+    <picker class=""  range="{{pickArray}}"  value = "{{pickArrayIndex}}"  
+    bindchange="pickChange">
+      种类:<button size = "mini"> {{pickArray[pickArrayIndex]}}</button> 
+    </picker>
+    <input  placeholder="输入当地有名的地方" bindinput="inputInput" class = "input"/>
+    <button  bindtap = "search"><icon type="search" /></button>
+</view>
+<view class = "body">
+    <block wx:for="{{list}}" wx:for-index="index" wx:key="this">
+        <view bindtap = "routeHelp" id = "{{index}}">{{index+1}}：{{item.name}}</view>
+    </block>
+      
+</view>
