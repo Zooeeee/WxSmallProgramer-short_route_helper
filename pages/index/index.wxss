@@ -1,0 +1,39 @@
+/* pages/index/index.wxss */
+page {
+    height: 100%;
+    float: left;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('https://upload-images.jianshu.io/upload_images/11628766-477eab9037933fd1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240');
+
+}
+
+
+.btn{ 
+    margin-top: 250rpx;
+    border-radius: 25rpx;
+    width: 150px; /* 宽度 */
+    height: 60px; /* 高度 */
+    line-height: 110rpx;
+    outline: none; /* 不显示轮廓线 */
+    font-size: 19px; /* 字体大小 */
+    font-family: Microsoft YaHei; /* 设置字体 */
+    background-color: rgba(255,255,255,0.5);
+}
+.btn p {
+    position: relative;
+}
+
+.content{
+    margin-top: 300rpx;
+    text-align: center;
+}
+.big{
+    font-size: 80rpx;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+.txt2{
+    margin-top: 50rpx;
+}

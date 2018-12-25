@@ -6,8 +6,22 @@ Page({
      */
     data: {
         pickArrayIndex: 0,
-        pickArray: ["生活服务", "休闲娱乐", " 运动健身", "旅游景点", "自然地物 ", "美食",
-            " 宾馆 ", "购物 ", "汽车服务", "运动健身", "医疗", "交通设施"],
+        pickArray: ["生活服务", "休闲娱乐",  " 健身", "旅游景点", "自然地物 ", "美食",
+            " 宾馆 ", "购物 ", "汽车服务", "运动", "医疗", "交通设施"],
+        imgArray:[
+            {src:"./img/shenghuofuwu.png",value:"生活服务"},
+            {src:"./img/yule.png",value:"休闲娱乐"},
+            {src:"./img/jianshen.png",value:"健身"},
+            {src:"./img/jingdian.png",value:"旅游景点"},
+            {src:"./img/ziran.png",value:"自然地物"},
+            {src:"./img/meishi.png",value:"美食"},
+            {src:"./img/binguan.png",value:"宾馆"},
+            {src:"./img/gouwu.png",value:"购物"},
+            {src:"./img/qichefuwu.png",value:"汽车服务"},
+            {src:"./img/yundong.png",value:"运动"},
+            {src:"./img/yiliao.png",value:"医疗"},
+            {src:"./img/jiaotong.png",value:"交通设施"}
+        ]
     },
 
     /**
