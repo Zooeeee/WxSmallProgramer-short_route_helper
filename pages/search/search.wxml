@@ -1,33 +1,31 @@
-<!--pages/search/search.wxml-->
-<view class = "top">
-    <view class = "defaultCity">当前城市:{{defaultCity}}</view>
-     <view class = "defaultCity">{{selectPlace}}</view>
-    <view class="search" >
-        <input type="text" placeholder="请输入地点(tips:最好输入名气大的)"/>
-        <button  bindtap = "search"><icon type="search" /></button>
+<!-- pages/search/search.wxml -->
+<!-- 头部信息以及搜索 -->
+<view class="top">
+    <image class="smallImg" src="../../img/today/GPS.png"  />
+      
+    <view class="defaultCity">{{defaultCity}}:</view>
+    <view class="search">
+        <input type="text" bindinput="inputInput" />
+        <icon type="search" bindtap="search" />
     </view>
 </view>
+<view class="tips">tips:请输入人气地点</view>
+<!-- 选择类别 -->
 
 <view class="option">
     <block wx:for="{{imgArray}}" wx:for-index="index" wx:key="this">
-        <view class="oneOption ">
-            <view ><image style="width:120rpx;height:120rpx;" src="{{item.src}}" /></view>
-            <p>{{item.value}}</p>
+        <view class="oneOption " bindtap="optionClick" data-text="{{index}}">
+            <view>
+                <image class="{{index==click?'oneOptionImgClick':'oneOptionImg'}}" src="{{item.src}}" />
+            </view>
+            <p class="{{index==click?'oneOptionPClick':''}}">{{item.value}}</p>
         </view>
     </block>
 </view>
-
-<view class = "select">
-    <picker class=""  range="{{pickArray}}"  value = "{{pickArrayIndex}}"  
-    bindchange="pickChange">
-      种类:<button size = "mini"> {{pickArray[pickArrayIndex]}}</button> 
-    </picker>
-    <input  placeholder="输入当地有名的地方" bindinput="inputInput" class = "input"/>
-    <button  bindtap = "search"><icon type="search" /></button>
-</view>
-<view class = "body">
+<!-- 搜索结果清单 -->
+<view class="body">
     <block wx:for="{{list}}" wx:for-index="index" wx:key="this">
-        <view class="oneResult" bindtap = "routeHelp" id = "{{index}}">{{index+1}}：{{item.name}}</view>
+        <view class="oneResult" bindtap="routeHelp" id="{{index}}">{{index+1}}：{{item.name}}</view>
     </block>
-      
 </view>
+<view wx:if="{{tipsIsShow}}" class="tips">tips:触摸列表有提示</view>

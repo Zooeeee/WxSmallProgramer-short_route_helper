@@ -1,15 +1,5 @@
 <!-- pages/index/index.wxml -->
 <view class="body">
-    <!-- <view class="content">
-        <h1 class="big">世界</h1>
-        <text class="txt1" decode="npsp">&nbsp;&nbsp;那么大</text>
-        <view></view>
-        <view class="txt2">
-            <text>我想去看看</text>
-        </view>
-    </view> -->
-    <image class="" src="../../img/index/title.png"  />
-      
     <button class="btn">
         <p>开 始 体 验</p>
     </button>
