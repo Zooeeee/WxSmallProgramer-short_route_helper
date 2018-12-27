@@ -1,6 +1,0 @@
-<!-- pages/index/index.wxml -->
-<view class="body">
-    <button class="btn">
-        <p>开 始 体 验</p>
-    </button>
-</view>

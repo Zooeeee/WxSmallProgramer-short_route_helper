@@ -1,7 +1,7 @@
 <!-- pages/search/search.wxml -->
 <!-- 头部信息以及搜索 -->
 <view class="top">
-    <image class="smallImg" src="../../img/today/GPS.png"  />
+    <image class="smallImg" src="../../img/place/GPS.png"  />
       
     <view class="defaultCity">{{defaultCity}}:</view>
     <view class="search">

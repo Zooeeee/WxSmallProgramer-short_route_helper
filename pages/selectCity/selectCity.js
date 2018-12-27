@@ -90,11 +90,6 @@ Page({
             city: e.currentTarget.dataset.city
         })
         console.log("修改默认城市为" + e.currentTarget.dataset.city);
-        try {
-            wx.clearStorageSync();
-            console.log("清除缓存一次");
-        } catch (e) {
-        };
         wx.setStorage({
             key: 'defaultCity',
             data: e.currentTarget.dataset.city,
@@ -110,23 +105,17 @@ Page({
         this.setData({
             city: e.currentTarget.dataset.city
         });
-        try {
-            wx.clearStorageSync();
-            console.log("清除缓存一次");
-        } catch (e) {
-            console.log("清除缓存一次")
-        };
-
         wx.setStorage({
             key: 'defaultCity',
             data: e.currentTarget.dataset.city,
         });
-        console.log("修改默认城市为" + e.currentTarget.dataset.city)
+        console.log("修改默认城市为" + e.currentTarget.dataset.city);
     },
     //点击热门城市回到顶部
     hotCity: function () {
         this.setData({
             scrollTop: 0,
         })
-    }
+    },
+
 })

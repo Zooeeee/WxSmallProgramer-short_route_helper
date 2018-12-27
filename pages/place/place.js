@@ -2,20 +2,13 @@
 Page({
   data: {
     defaultCity: '',
-    iconSrc: "/img/today/GPS.png",
+    iconSrc: "/img/place/GPS.png",
     startDayIndex: 0,
     dayCountIndex: 0,
     dayCount: ""
   },
 
   onLoad: function (e) {
-   /*  let defaultCity =  "武汉"
-     wx.setStorage({
-      key: 'defaultCity',
-      data: defaultCity,
-    });  */
-   
-
   },
   onReady: function (e) {
 
@@ -75,13 +68,43 @@ Page({
         //请求第二个api,关于行程的结束
       },
     });//请求缓存结束
+    //请求nickName缓存
+    wx.getStorage({
+      key: 'nickName',
+      success: function (res) {
+        console.log(res.data);
+        console.log(that.data.defaultCity);
+        //访问服务器
+        wx.request({
+          url: 'http://192.168.1.107:3000/place',//指向服务器地址
+          method: "post",
+          data: {
+            nickName: res.data,
+            city:that.data.defaultCity
+          },
+          header: {
+            'content-type': 'Application/json'
+          },
+          success: function (res) {
+            console.log("访问服务器成功");
+          },
+          fail:function(err){
+            console.log(err);
+          }
+        });
+        //访问一次服务器 ---end
+
+
+      }
+    })
+    //请求缓存结束
   },
 
 
   //picker组件的触发事件
   pickDayCount: function (e) {
     console.log(e.detail.value);
-    
+
     let title = this.data.itineraries[e.detail.value].description; //字符串
     let obj = this.data.itineraries[e.detail.value].itineraries; //数组
     this.setData({

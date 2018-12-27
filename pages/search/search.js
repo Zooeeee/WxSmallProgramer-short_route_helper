@@ -117,7 +117,7 @@ Page({
                 console.log("请求成功");
                 console.log(res.data.pointList); */
                 if (res.data.pointList.length == 0) {
-                    console.log("警报");
+                    console.log("请求的数据长度为0");
                     wx.showToast({
                         title: '没有找到该地点',
                         icon: 'none',
@@ -150,7 +150,7 @@ Page({
     },
     //切换选项 并执行搜索
     optionClick: function (e) {
-        console.log(e.currentTarget.dataset.text);
+        console.log("点击的位置是"+e.currentTarget.dataset.text);
         let a = e.currentTarget.dataset.text;
         this.setData({
             class: this.data.imgArray[a].value,
