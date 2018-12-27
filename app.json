@@ -1,8 +1,8 @@
 {
     "pages": [
+        "pages/user/user",
         "pages/welcome/welcome",
         "pages/search/search",
-        "pages/user/user",
         "pages/place/place",
         "pages/test/test",                   
         "pages/selectCity/selectCity",

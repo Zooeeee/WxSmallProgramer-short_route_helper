@@ -76,7 +76,7 @@ Page({
         console.log(that.data.defaultCity);
         //访问服务器
         wx.request({
-          url: 'http://192.168.1.107:3000/place',//指向服务器地址
+          url: 'http://192.168.1.107:3000/addPlace',//指向服务器地址
           method: "post",
           data: {
             nickName: res.data,

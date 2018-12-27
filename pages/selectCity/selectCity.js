@@ -40,8 +40,7 @@ Page({
             itemH: itemH,
             searchLetter: tempObj,
             cityList: cityList
-        })
-
+        });
     },
     onReady: function () {
         // 生命周期函数--监听页面初次渲染完成
@@ -49,6 +48,13 @@ Page({
     },
     onShow: function () {
         // 生命周期函数--监听页面显示
+        let that = this ;
+        wx.getStorage({
+            key:'defaultCity',
+            success:function(res){
+                that.setData({city:res.data})
+            }
+        });
 
     },
     onHide: function () {

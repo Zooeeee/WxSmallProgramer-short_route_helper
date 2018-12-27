@@ -1,1 +1,57 @@
 /* pages/user/user.wxss */
+page{
+    margin-top: 30rpx;
+    text-align: center;
+    padding: 0;
+    background-color: #f7eded;
+ }
+
+ @keyframes sport
+{
+0%   {left:0px;}
+100% {left:50rpx;}
+}
+ .top{
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ }
+
+ .avatar{
+     height: 250rpx;
+     width:250rpx;
+     border-radius:50%;
+     overflow:hidden;
+ }
+
+.edit{
+    text-align: right;
+    margin-right: 50rpx;
+}
+
+ .onePlace{
+     margin: 50rpx;
+     display: flex;
+     flex-direction: row;
+     justify-content:center;
+     text-align: left;
+ }
+ .onePlace button{
+     height: 50rpx;
+     width: 50rpx;
+ }
+ .onePlace view{
+     width:600rpx;
+ }
+ .onePlace icon{
+    margin-right: 50rpx;
+    animation: sport 1.5s;
+    position:relative;
+    animation-fill-mode :forwards;
+ }
+
+.delete{
+    text-decoration:line-through;
+}

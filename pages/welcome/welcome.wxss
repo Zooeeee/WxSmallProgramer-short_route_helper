@@ -14,16 +14,18 @@
 @keyframes sport
 {
 0%   {top:0px;}
-100% {top:-300rpx;}
+100% {top:-400rpx;}
 }
 
 page {
     height: 100%;
     width: 100%;
-    background-color: wheat;
+   /*  background-color: wheat; */
     display: flex;
     justify-content:center;
-   
+    background: url('https://upload-images.jianshu.io/upload_images/11628766-e2256d2cd3cc13b5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240') no-repeat;
+    background-size:100% 100%;  
+
 }
 
 .container{
@@ -45,6 +47,7 @@ page {
 }
 
 .btn{ 
+    margin-top: 200rpx;
     border-radius: 25rpx;
     width: 150px; /* 宽度 */
     height: 60px; /* 高度 */
@@ -52,8 +55,8 @@ page {
     outline: none; /* 不显示轮廓线 */
     font-size: 19px; /* 字体大小 */
     font-family: Microsoft YaHei; /* 设置字体 */
-    background-color: rgba(255,255,255,0.4);
-
+    background-color: rgba(255,255,255,0.9);
+   background-color: wheat;
    /*  border: 1px solid #000000; */
     animation: fade-in;/*动画名称*/  
     animation-duration:1.5s;/*动画持续时间*/   
