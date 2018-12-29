@@ -1,9 +1,11 @@
 /* pages/user/user.wxss */
 page{
-    margin-top: 30rpx;
     text-align: center;
     padding: 0;
     background-color: #f7eded;
+    display:flex;
+    justify-content: center;
+    align-items: center;
  }
 
  @keyframes sport
@@ -11,7 +13,19 @@ page{
 0%   {left:0px;}
 100% {left:50rpx;}
 }
- .top{
+.container{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid#000000;
+}
+
+.top{
+    height: 300rpx;
+    background-color: wheat;
+    width: 100%;
     text-align:center;
     display:flex;
     justify-content: center;
@@ -19,37 +33,60 @@ page{
     flex-direction: column;
  }
 
- .avatar{
-     height: 250rpx;
-     width:250rpx;
+ 
+
+.avatar{
+     height: 150rpx;
+     width:150rpx;
      border-radius:50%;
      overflow:hidden;
  }
 
 .edit{
-    text-align: right;
-    margin-right: 50rpx;
+    width: 90%;
+    display:flex;
+    justify-content:space-between;
+    align-items:right;
 }
 
- .onePlace{
-     margin: 50rpx;
+
+.edit image{
+    width: 60rpx;
+    height: 60rpx;
+}
+.edit button{
+    width: 110rpx;
+    height: 70rpx;
+    border-radius: 10rpx;
+}
+
+.body{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 90%;
+}
+
+.onePlace{
+    width: 100%;
      display: flex;
      flex-direction: row;
-     justify-content:center;
-     text-align: left;
- }
- .onePlace button{
-     height: 50rpx;
-     width: 50rpx;
- }
- .onePlace view{
-     width:600rpx;
- }
- .onePlace icon{
+     justify-content: space-between;
+     align-items:center;
+     border-bottom:1px dashed #000;    
+     height: 100rpx;
+}
+
+
+ 
+.onePlace icon{
     margin-right: 50rpx;
     animation: sport 1.5s;
     position:relative;
     animation-fill-mode :forwards;
+  
  }
 
 .delete{

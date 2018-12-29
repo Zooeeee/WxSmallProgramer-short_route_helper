@@ -34,14 +34,14 @@
             {
                 "pagePath": "pages/prediction/prediction",
                 "text": "近期预测",
-                "iconPath": "img/tarBar/预测.png",
-                "selectedIconPath": "img/tarBar/预测-select.png"
+                "iconPath": "img/tarBar//predict.png",
+                "selectedIconPath": "img/tarBar/predict-select.png"
             },
             {
                 "pagePath": "pages/user/user",
-                "text": "个人",
-                "iconPath": "img/tarBar/个人.png",
-                "selectedIconPath": "img/tarBar/个人-select.png"
+                "text": "个人历史",
+                "iconPath": "img/tarBar/history.png",
+                "selectedIconPath": "img/tarBar/history-select.png"
             }
         ]
     }

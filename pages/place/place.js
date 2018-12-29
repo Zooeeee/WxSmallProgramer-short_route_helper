@@ -54,15 +54,34 @@ Page({
           url: "http://api.map.baidu.com/telematics/v3/travel_city?output=json&ak=w65uwmj5P2rqqpGv8iunSyyKgLke1bZo&location="
             + that.data.defaultCity + "&day=all",
           success: function (res) {
-            let itineraries = res.data.result.itineraries;
-            //console.log("得到的数据",itineraries);
-            const getItineraries = require("../../utils/getItineraries");
-            that.setData({
-              itineraries: itineraries,
-              title: itineraries[0].description,
-              dayCount: getItineraries.getPickers(itineraries),
-              plan: itineraries[0].itineraries,
-            })
+            console.log(res);
+            //没有出行信息就报错
+            if (res.data.result.itineraries == null) {
+              wx.showModal({
+                title: '抱歉',
+                content: '抱歉！暂时没有该地区计划信息',
+                success: function (res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定')
+                  } else {
+                    console.log('用户点击取消')
+                  }
+                }
+              })
+            }
+            //有出行信息
+            else {
+              let itineraries = res.data.result.itineraries;
+              //console.log("得到的数据",itineraries);
+              const getItineraries = require("../../utils/getItineraries");
+              that.setData({
+                itineraries: itineraries,
+                title: itineraries[0].description,
+                dayCount: getItineraries.getPickers(itineraries),
+                plan: itineraries[0].itineraries,
+              })
+            }
+
           }
         })
         //请求第二个api,关于行程的结束
@@ -80,7 +99,7 @@ Page({
           method: "post",
           data: {
             nickName: res.data,
-            city:that.data.defaultCity
+            city: that.data.defaultCity
           },
           header: {
             'content-type': 'Application/json'
@@ -88,7 +107,7 @@ Page({
           success: function (res) {
             console.log("访问服务器成功");
           },
-          fail:function(err){
+          fail: function (err) {
             console.log(err);
           }
         });

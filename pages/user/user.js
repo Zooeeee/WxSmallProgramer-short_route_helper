@@ -13,6 +13,7 @@ Page({
      */
     onShow: function () {
         let that = this;
+        console.log("user.js的onshow函数")
         wx.getStorage({
             key: 'nickName',
             success: function (res) {
@@ -76,15 +77,33 @@ Page({
             method:'delete',
             data:{
                 nickName:that.data.nickName,
-                deletePlaces:that.data.deletePlaces
+                deletePlaces:that.data.deletePlaces,
             },
             success:function(res){
                 console.log("发送delete成功");
+                that.setData({
+                    deletePlaces:[],
+                    places:[]
+                })
+                that.onShow();
             }
         });
-        this.onShow();
+    },//点击保存按钮-----end
+    search:function(e){
+        let that = this ;
+        let value = e.currentTarget.id;
+        console.log(value);
+        wx.setStorage({
+            key: 'defaultCity',
+            data: value,
+        });
+        wx.showToast({
+            title: '加载',
+            icon: 'loading',
+            duration: 1000,
+            mask:true
+        })
+    }
 
-
-    }//点击保存按钮-----end
 
 })
