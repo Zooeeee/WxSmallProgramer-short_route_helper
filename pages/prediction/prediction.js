@@ -2,11 +2,9 @@
 Page({
     data: {
         defaultCity: '武汉',
-        titles: [],
-        zss: [],
-        dess: [],
-        weathers: [],
-        winds: []
+        totalHelpData: [],
+        totalWeatherData: [],
+        dates : []
     },
     //onload函数处理wxml中关于时间的部分 不需要刷新所以放在onload中
     onLoad: function (e) {
@@ -51,26 +49,42 @@ Page({
                     dess.push(temp[i].des);
                 }
                 // //获取 title zs des 的结束
-                //设置数据
-                console.log(temps);
+                //设置结合到一起数据 方便循环生成
+                let totalWeatherData = [];
+                for (let i = 0; i < temps.length; i++) {
+                    totalWeatherData.push({
+                        max: temps[i].max,
+                        min: temps[i].min,
+                        weather: weathers[i],
+                        wind: winds[i]
+                    })
+                };
+                let totalHelpData = [];
+                for (let i = 0; i < titles.length; i++) {
+                    totalHelpData.push({
+                        title: titles[i],
+                        zs: zss[i],
+                        des: dess[i],
+                    })
+                };
+                console.log(totalHelpData);
+                totalHelpData[4].title='紫外线';
                 that.setData({
-                    temps: temps,
-                    titles: titles,
-                    dess: dess,
-                    zss: zss,
-                    winds: winds,
-                    weathers: weathers
+                    totalWeatherData: totalWeatherData,
+                    totalHelpData: totalHelpData
                 });
+
             },
         })
     },
     //帮助消息绑定事件
     clickHelp: function (e) {
         let index = e.target.id;
+        console.log(e.target.id);
         let that = this;
         wx.showModal({
             title: '友情提示',
-            content: that.data.dess[index],
+            content: that.data.totalHelpData[index].des,
             success: function (res) {
                 if (res.confirm) {
                     console.log('用户点击确定')
@@ -80,9 +94,6 @@ Page({
             }
         });
     }
-
-
-
 })
 
 

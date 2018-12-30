@@ -101,6 +101,7 @@ page{
     width: 100%;
     font-family:"楷体";
     font-size:50rpx;
-    background-color: white;
+    background-color: #eee2e2;
+    box-shadow:5px 2px 6px #000;
 }
 /*  江汉路  */

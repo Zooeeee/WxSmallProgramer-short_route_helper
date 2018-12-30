@@ -1,50 +1,45 @@
 /* pages/prediction/prediction.wxss */
-.page{
-    margin: 20rpx 30rpx 0rpx 30rpx ;
-    padding: 0;
-    border: 1px solid #000000;
-    
-}
-.container1{
-    display: flex;
-    height: 200rpx;
-    border: 1px solid #000000;
-}
-
-.container2{
-    height: 280rpx;
-    border: 1px solid #000000;
-}
-
-.container3{
-    display: flex;
-    height: 250rpx;
-    border: 1px solid #000000;
-}
-
-.container4{
-    display: flex;
-    margin-top: 60rpx;
-    height: 150rpx;
-    border: 1px solid #000000;
-}
-
-.container5{
-    display: flex;
-    height: 150rpx;
-    border: 1px solid #000000;
-}
-.textCenter{
-    text-align: center;
-}
-
-.dayTop{
-    width: 25%;
-    height: 100%;
-    border: 1px solid #000000;
-}
-
-.advice{
+page{
+    background-color: #f7eded;
     width: 100%;
-    border: 1px solid #000000;
+    margin: 0;
+}
+
+.container{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* .container view{
+    border:1px solid #000000; 
+} */
+
+.data{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+
+.img{
+    width: 700rpx;
+    height: 400rpx;  
+}
+
+.block{
+    width:170rpx;
+    text-align: center; 
+}
+
+.height{
+    height: 110rpx;
+    text-align: center; 
+}
+
+.icon{
+    height: 80rpx;
+    width: 80rpx;
 }

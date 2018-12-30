@@ -37,12 +37,31 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
 					"name": "welcom",
-					"pathName": "pages/welcome/welcome"
+					"pathName": "pages/welcome/welcome",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "place",
+					"pathName": "pages/place/place",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "prediction",
+					"pathName": "pages/prediction/prediction",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "prediction",
+					"pathName": "pages/prediction/prediction",
+					"query": ""
 				}
 			]
 		}

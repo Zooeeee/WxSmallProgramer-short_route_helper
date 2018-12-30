@@ -1,19 +1,20 @@
 <!-- pages/today/today.wxml -->
 <view class="top">
+  <view>{{weather}}</view>
   <label class="nav defaultCity">
     <navigator url="../selectCity/selectCity">
       <image class="GPSIcon" src="{{iconSrc}}"></image>
       <text>{{defaultCity}}</text>
     </navigator>
   </label>
+  <view>{{temperature}}</view>
 </view>
-<view class="weather">
-  <view>data:{{date}}</view>
-  <view>temperature:{{temperature}}</view>
-  <view>weather:{{weather}}</view>
+<view class="description">
+  <view>{{date}}</view>
+  <view bindtap="clickAbstract">{{abstract}}</view>
 </view>
 <view class="selectData">
-  <view></view>
+  <view>行动计划:</view>
   <picker bindchange="pickDayCount" value="{{dayCountIndex}}" range="{{dayCount}}">
     <view class="picker">
       <button size="mini">{{dayCount[dayCountIndex]}}</button>
@@ -21,9 +22,9 @@
   </picker>
   <view></view>
 </view>
-<view class="buttom">
-  <view class="buttom-title">{{title}}</view>
-  <scroll-view class="" scroll-y="true" style="height: 600rpx">
+<view class="body">
+  <view class="body-title">{{title}}</view>
+  <scroll-view  scroll-y="true" style="height: 800rpx">
     <block wx:for="{{plan}}" wx:for-index="index" wx:key="this">
       <view bindtap="routeHelp" id="{{index}}" class="plan">
         第{{index+1}}天:{{item.description}}

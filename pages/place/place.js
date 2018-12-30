@@ -5,7 +5,12 @@ Page({
     iconSrc: "/img/place/GPS.png",
     startDayIndex: 0,
     dayCountIndex: 0,
-    dayCount: ""
+    dayCount: "",
+    description:"",
+    abstract:"",
+    itineraries: [],
+    title: "",
+    plan: [],
   },
 
   onLoad: function (e) {
@@ -75,6 +80,8 @@ Page({
               //console.log("得到的数据",itineraries);
               const getItineraries = require("../../utils/getItineraries");
               that.setData({
+                description:res.data.result.description,
+                abstract:res.data.result.abstract,
                 itineraries: itineraries,
                 title: itineraries[0].description,
                 dayCount: getItineraries.getPickers(itineraries),
@@ -135,6 +142,7 @@ Page({
   },
   //点击每一天的计划可以弹出一个消息框，其中有路程帮助信息
   routeHelp: function (e) {
+    console.log("餐饮信息");
     let dinning = this.data.plan[e.target.id].dinning
     //console.log(dinning);//餐饮信息
     wx.showModal({
@@ -148,7 +156,21 @@ Page({
         }
       }
     });
-  }
+  },
+  clickAbstract:function(e){
+    let description = this.data.description;
+    wx.showModal({
+      title: '详细描述',
+      content: description,
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else {
+          console.log('用户点击取消')
+        }
+      }
+    });
+  },
 
 
 
