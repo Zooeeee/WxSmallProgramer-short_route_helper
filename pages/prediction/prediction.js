@@ -29,9 +29,14 @@ Page({
     onShow: function () {
         let that = this;
         let dates = require('../../utils/getNearDate');
+        let days = [];
+        for(let i = 0 ; i < dates.getNearDate().length;i++){
+            days.push(dates.getNearDate()[i].day+"日");
+        }
         this.setData({
-            dates: dates.getNearDate()
-        })
+            dates: dates.getNearDate(),
+           days:days
+        });
         //请求缓存并将数据通过处理后放到 prediction.wxml上
         //同步加载数据   顺序才对
         try {
@@ -102,7 +107,7 @@ Page({
         //如果是第一次绘制
         let datas = this.data;
         dataList = {
-            dates: this.data.dates,
+            days: this.data.days,
             tempsMax: this.data.tempsMax,
             tempsMin: this.data.tempsMin
         };
@@ -137,13 +142,16 @@ Page({
     getOption: function () {
         // 指定图表的配置项和数据
         var option = {
+              grid:{
+                x:20,
+                y:20,
+                x2:20,
+                y2:30,
+                borderWidth:1
+            },
             xAxis: {
                 type: 'category',
-                data: dataList.dates
-            },
-            tooltip: {
-                show: true,
-                trigger: 'axis'
+                data: dataList.days
             },
             yAxis: {
                 x: 'center',
