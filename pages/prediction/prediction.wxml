@@ -3,13 +3,19 @@
         <block wx:for="{{dates}}" wx:for-index="index" wx:key="this">
             <view class="block">
                 <view>{{item.weekday}}</view>
-                <view>{{item.day}}</view>
+                <view>{{item.day}}日</view>
             </view>
         </block>
     </view>
     <view class="data" style="margin-top:30rpx;">
         <block wx:for="{{totalWeatherData}}" wx:for-index="index" wx:key="this">
-            <view class="block">{{item.max}}</view>
+            <view class="height" hover-class="none" hover-stop-propagation="false">
+                <view class="height">
+                    <image class="icon" src="{{item.weatherIcon}}" />
+                    <text class="weatherFont">{{item.weather}}</text>
+                </view>
+                <view class="block">{{item.max}}</view>
+            </view>
         </block>
     </view>
     <view class="canvas">
@@ -19,19 +25,15 @@
         <block wx:for="{{totalWeatherData}}" wx:for-index="index" wx:key="this">
             <view class="block">
                 <view>{{item.min}}</view>
-                <view class="height">
-                    <image class="icon" src="{{item.weatherIcon}}" />
-                    <text class="weatherFont">{{item.weather}}</text>
-                </view>
                 <view>{{item.wind}}</view>
             </view>
         </block>
     </view>
     <view class="data" style="margin-top:60rpx;">
         <block wx:for="{{totalHelpData}}" wx:for-index="index" wx:key="this">
-            <view class="height block"id="{{index}}" bindtap="clickHelp">
-                <image class="icon" src="../../img/prediction/{{item.title}}.png" />
-                <view >{{item.zs}}</view>
+            <view class="height block">
+                <image id="{{index}}" bindtap="clickHelp" class="icon" src="../../img/prediction/{{item.title}}.png" />
+                <view>{{item.zs}}</view>
             </view>
         </block>
     </view>

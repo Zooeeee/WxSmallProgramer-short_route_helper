@@ -1,23 +1,31 @@
 <!-- pages/today/today.wxml -->
 <view class="top">
-  <view>
-    <image class="weatherIcon" src="{{weatherIconSrc}}" />
-    {{weather}}
+  <view class="top-up">
+    <label>
+      <navigator url="../selectCity/selectCity">
+        <image src="../../img/place/gps.png" />
+        <text>{{defaultCity}}</text>
+        <image src="../../img/place/downSelect.png" />
+      </navigator>
+    </label>
+    <view >
+      <text>温度:{{temperature}}</text>
+    </view>
   </view>
-  <label >
-    <navigator url="../selectCity/selectCity">
-      <image class="GPSIcon" src="{{iconSrc}}"></image>
-      <text>{{defaultCity}}</text>
-    </navigator>
-  </label>
-  <view>{{temperature}}</view>
+  <view style="text-align:center;font-size:35rpx;">{{date}}</view>
+</view>
+<view class="weather">
+  <image src="{{weatherIconSrc}}" />
+  <view>{{weather}}</view>
 </view>
 <view class="description">
-  <view>{{date}}</view>
-  <view bindtap="clickAbstract">{{abstract}}</view>
+ <!--  <view bindtap="clickAbstract">{{abstract}}</view> -->
+  <van-panel title="{{defaultCity}}" desc="点击更有详情 " status="↓">
+    <view class="content" bindtap="clickAbstract">{{abstract}}</view>
+  </van-panel>
 </view>
 <view class="body">
-  <van-tabs bind:click="tabsOnClick" swipeable>
+  <van-tabs type="card" bind:click="tabsOnClick" swipeable>
     <view class="body-title">{{title}}</view>
     <van-tab wx:for="{{dayCount}}" wx:key="index" title="{{dayCount[index]}}">
       <view class="content">
