@@ -12,9 +12,9 @@ page{
     align-items: center;
 }
 
- .container view{
+/*  .container view{
     border:1px solid #000000; 
-} 
+}  */
 
 .data{
     width: 100%;
@@ -36,8 +36,14 @@ page{
 }
 
 .height{
-    height: 110rpx;
     text-align: center; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:center;
+}
+.weatherFont{
+    font-size: 30rpx;
 }
 
 .icon{
@@ -51,7 +57,7 @@ page{
 .canvas {
     background:white;
     width:720rpx;
-    height:200px;
+    height:300px;
     background-color:rgba(255,255,255,0.1);
   } 
 ec-canvas {

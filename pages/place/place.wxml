@@ -1,7 +1,10 @@
 <!-- pages/today/today.wxml -->
 <view class="top">
-  <view>{{weather}}</view>
-  <label class="nav defaultCity">
+  <view>
+    <image class="weatherIcon" src="{{weatherIconSrc}}" />
+    {{weather}}
+  </view>
+  <label >
     <navigator url="../selectCity/selectCity">
       <image class="GPSIcon" src="{{iconSrc}}"></image>
       <text>{{defaultCity}}</text>

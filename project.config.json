@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -53,9 +53,9 @@
 				},
 				{
 					"id": 2,
-					"name": "predictionBeijing",
+					"name": "prediction",
 					"pathName": "pages/prediction/prediction",
-					"query": "defaultCity=\"北京市\""
+					"query": ""
 				},
 				{
 					"id": 3,

@@ -1,5 +1,5 @@
 import * as echarts from '../../ec-canvas/echarts';
-
+const weatherTrans = require('../../utils/weatherTrans');
 const app = getApp();
 var dataList = {};
 var k = 0;
@@ -77,7 +77,8 @@ Page({
                         max: temps[i].max,
                         min: temps[i].min,
                         weather: weathers[i],
-                        wind: winds[i]
+                        wind: winds[i],
+                        weatherIcon:weatherTrans.src(weathers[i])
                     })
                 };
                 let totalHelpData = [];

@@ -106,6 +106,9 @@ page{
     text-align: center;
     background-color: #f44;
   }
+  .van-swipe-cell__left{
+    background-color: #99ccff;
+  }
   
   .swipe-cell{
       width: 100%;

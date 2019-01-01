@@ -7,30 +7,31 @@
             </view>
         </block>
     </view>
-    <view class="data" >
+    <view class="data" style="margin-top:30rpx;">
         <block wx:for="{{totalWeatherData}}" wx:for-index="index" wx:key="this">
             <view class="block">{{item.max}}</view>
         </block>
     </view>
-    <view class="canvas" >
+    <view class="canvas">
         <ec-canvas id="mychart" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
     </view>
     <view class="data">
         <block wx:for="{{totalWeatherData}}" wx:for-index="index" wx:key="this">
             <view class="block">
                 <view>{{item.min}}</view>
-                <view class="height">{{item.weather}}</view>
+                <view class="height">
+                    <image class="icon" src="{{item.weatherIcon}}" />
+                    <text class="weatherFont">{{item.weather}}</text>
+                </view>
                 <view>{{item.wind}}</view>
             </view>
         </block>
     </view>
     <view class="data" style="margin-top:60rpx;">
         <block wx:for="{{totalHelpData}}" wx:for-index="index" wx:key="this">
-            <view class="block">
-                <view class="height">
-                    <image class="icon" src="../../img/prediction/{{item.title}}.png" />
-                </view>
-                <view id="{{index}}" class="height" bindtap="clickHelp">{{item.zs}}</view>
+            <view class="height block"id="{{index}}" bindtap="clickHelp">
+                <image class="icon" src="../../img/prediction/{{item.title}}.png" />
+                <view >{{item.zs}}</view>
             </view>
         </block>
     </view>

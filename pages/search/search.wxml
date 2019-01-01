@@ -22,10 +22,12 @@
 </view>
 <!-- 搜索结果清单 -->
 <view class="body">
-   <van-collapse value="{{ active1 }}" data-key="active1" bind:change="onChange">
-        <block wx:for="{{list}}" wx:for-index="index" wx:key="this">
-            <van-collapse-item title="{{item.name}}">{{item.address}}</van-collapse-item>
-        </block>
-    </van-collapse>
+    <scroll-view style="height:600rpx;" scroll-x="false" scroll-y="true">
+        <van-collapse value="{{ active1 }}" data-key="active1" bind:change="onChange">
+            <block wx:for="{{list}}" wx:for-index="index" wx:key="this">
+                <van-collapse-item title="{{item.name}}">{{item.address}}</van-collapse-item>
+            </block>
+        </van-collapse>
+    </scroll-view>
 </view>
 <van-notify id="custom-selector" />

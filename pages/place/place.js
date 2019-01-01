@@ -1,4 +1,5 @@
 // pages/today/today.js
+const weatherTrans = require('../../utils/weatherTrans');
 
 Page({
   data: {
@@ -10,19 +11,17 @@ Page({
     itineraries: [],
     title: "",
     plan: [],
-    
+
   },
 
   onLoad: function (e) {
   },
   onReady: function (e) {
-
   },
   onShow: function (e) {
     console.log("today.js中的onshow函数");
     //清除数据避免出错
     this.setData({
-      startDayIndex: 0,
       dayCountIndex: 0,
       dayCount: ""
     })
@@ -47,11 +46,15 @@ Page({
             });//设置缓存结束
             let obj = e.data.results[0].weather_data[0];
             //console.log(obj);
+            console.log("添加天气icon");
+            let weatherIconSrc =weatherTrans.src(obj.weather);
             that.setData({
               date: obj.date,
               temperature: obj.temperature,
-              weather: obj.weather
-            })
+              weather: obj.weather,
+              weatherIconSrc:weatherIconSrc 
+            });
+       
           }
         });//请求api结束
         //请求第二个api,关于行程的
@@ -129,6 +132,7 @@ Page({
       }
     })
     //请求缓存结束
+  
   },
 
   //点击每一天的计划可以弹出一个消息框，其中有路程帮助信息
@@ -148,6 +152,7 @@ Page({
       }
     });
   },
+
   clickAbstract: function (e) {
     let description = this.data.description;
     wx.showModal({
@@ -180,4 +185,8 @@ Page({
       plan: obj
     });
   },
+
+  
+
+
 })

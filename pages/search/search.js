@@ -95,14 +95,6 @@ Page({
     onReachBottom: function () {
 
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    },
-
     inputInput: function (e) {
         this.setData({
             input: e.detail.value
