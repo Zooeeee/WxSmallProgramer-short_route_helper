@@ -13,22 +13,23 @@
   <view>{{date}}</view>
   <view bindtap="clickAbstract">{{abstract}}</view>
 </view>
-<view class="selectData">
-  <view>行动计划:</view>
-  <picker bindchange="pickDayCount" value="{{dayCountIndex}}" range="{{dayCount}}">
-    <view class="picker">
-      <button size="mini">{{dayCount[dayCountIndex]}}</button>
-    </view>
-  </picker>
-  <view></view>
-</view>
 <view class="body">
-  <view class="body-title">{{title}}</view>
-  <scroll-view  scroll-y="true" style="height: 800rpx">
-    <block wx:for="{{plan}}" wx:for-index="index" wx:key="this">
-      <view bindtap="routeHelp" id="{{index}}" class="plan">
-        第{{index+1}}天:{{item.description}}
+  <van-tabs bind:click="tabsOnClick" swipeable>
+    <view class="body-title">{{title}}</view>
+    <van-tab wx:for="{{dayCount}}" wx:key="index" title="{{dayCount[index]}}">
+      <view class="content">
+        <van-collapse value="{{ active2 }}" data-key="active2" accordion bind:change="onChange">
+          <block wx:for="{{plan}}" wx:for-index="index" wx:key="this">
+            <van-collapse-item title="第{{index+1}}天">
+              <view bindtap="routeHelp" id="{{index}}">
+                <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;</text>
+                {{item.description}}
+                <image class="click" src="../../img/place/click.png" />
+              </view>
+            </van-collapse-item>
+          </block>
+        </van-collapse>
       </view>
-    </block>
-  </scroll-view>
+    </van-tab>
+  </van-tabs>
 </view>

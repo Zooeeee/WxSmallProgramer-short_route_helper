@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.2",
+	"libVersion": "2.4.3",
 	"appid": "wx27c88850a98514b4",
 	"projectname": "Demo",
 	"debugOptions": {
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -46,7 +46,7 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "place",
 					"pathName": "pages/place/place",
 					"query": ""

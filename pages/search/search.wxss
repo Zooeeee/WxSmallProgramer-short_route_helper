@@ -2,7 +2,6 @@ page{
    margin-top: 30rpx;
    text-align: center;
    padding: 0;
-   background-color: #f7eded;
 }
 .top{
     text-align:center;
@@ -31,7 +30,7 @@ page{
 .search input{
     text-align: left;
     width: 400rpx;
-    border: 1px solid white ;
+    border: 1px solid rgb(207, 200, 200) ;
     background-color: white;
 }
 
@@ -75,9 +74,9 @@ page{
     height:100rpx;
 }
 .oneOptionImgClick{
-    width:120rpx;
-    height:120rpx;
-    background-color: #eee2e2;
+    width:130rpx;
+    height:130rpx;
+    background-color: #e0e5eb;
     border-radius: 20rpx;
 }
 .oneOptionPClick{

@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        active1: [0],
         pickArrayIndex: 0,
         pickArray: ["生活服务", "休闲娱乐", " 健身", "旅游景点", "自然地物 ", "美食",
             " 宾馆 ", "购物 ", "汽车服务", "运动", "医疗", "交通设施"],
@@ -138,21 +139,7 @@ Page({
         })
 
     },//搜索结束
-    //路径帮助
-    routeHelp: function (e) {
-        let address = this.data.list[e.target.id].address;
-        wx.showModal({
-            title: '地址',
-            content: address,
-            success: function (res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                } else {
-                    console.log('用户点击取消')
-                }
-            }
-        });
-    },
+
     //切换选项 并执行搜索
     optionClick: function (e) {
         console.log("点击的位置是"+e.currentTarget.dataset.text);
@@ -179,4 +166,16 @@ Page({
           backgroundColor: 'red'
         });
       },
+
+    //手风琴
+  //手风琴组件函数
+  onChange(event) {
+    const { key } = event.currentTarget.dataset;
+    this.setData({
+      [key]: event.detail
+    });
+  },
+
+
+
 })

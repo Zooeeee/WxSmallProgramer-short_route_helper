@@ -1,6 +1,5 @@
 /* pages/prediction/prediction.wxss */
 page{
-    background-color: #f7eded;
     width: 100%;
     margin: 0;
 }

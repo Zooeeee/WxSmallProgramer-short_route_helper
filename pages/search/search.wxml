@@ -3,11 +3,10 @@
 <view class="top">
     <view class="defaultCity">{{defaultCity}}</view>
     <view class="search">
-        <input type="text" class="{{inputIsFocus?'focus':''}}" bindfocus="inputFocus" bindblur="inputFocus" bindinput="inputInput" value="江汉路" />
+        <input type="text" class="{{inputIsFocus?'focus':''}}" bindfocus="inputFocus" bindblur="inputFocus" bindinput="inputInput" placeholder="如:故宫" />
         <van-button type="primary" class="demo-margin-right" bindtap="search" size="small">
             搜索
         </van-button>
-        <!-- <icon type="search" bindtap="search" /> -->
     </view>
 </view>
 <!-- 选择类别 -->
@@ -23,10 +22,10 @@
 </view>
 <!-- 搜索结果清单 -->
 <view class="body">
-    <block wx:for="{{list}}" wx:for-index="index" wx:key="this">
-        <view class="oneResult" bindtap="routeHelp" id="{{index}}">{{index+1}}：{{item.name}}</view>
-        
-    </block>
+   <van-collapse value="{{ active1 }}" data-key="active1" bind:change="onChange">
+        <block wx:for="{{list}}" wx:for-index="index" wx:key="this">
+            <van-collapse-item title="{{item.name}}">{{item.address}}</van-collapse-item>
+        </block>
+    </van-collapse>
 </view>
-<view wx:if="{{tipsIsShow}}" class="tips">tips:触摸列表有提示</view>
 <van-notify id="custom-selector" />

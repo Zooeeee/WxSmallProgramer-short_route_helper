@@ -1,16 +1,16 @@
 // pages/today/today.js
+
 Page({
   data: {
     defaultCity: '',
     iconSrc: "/img/place/GPS.png",
-    startDayIndex: 0,
-    dayCountIndex: 0,
     dayCount: "",
-    description:"",
-    abstract:"",
+    description: "",
+    abstract: "",
     itineraries: [],
     title: "",
     plan: [],
+    
   },
 
   onLoad: function (e) {
@@ -72,6 +72,14 @@ Page({
                     console.log('用户点击取消')
                   }
                 }
+              });
+              that.setData({
+                description: res.data.result.description,
+                abstract: res.data.result.abstract,
+                itineraries: [],
+                title: "",
+                dayCount: [],
+                plan: [],
               })
             }
             //有出行信息
@@ -80,15 +88,14 @@ Page({
               //console.log("得到的数据",itineraries);
               const getItineraries = require("../../utils/getItineraries");
               that.setData({
-                description:res.data.result.description,
-                abstract:res.data.result.abstract,
+                description: res.data.result.description,
+                abstract: res.data.result.abstract,
                 itineraries: itineraries,
                 title: itineraries[0].description,
                 dayCount: getItineraries.getPickers(itineraries),
                 plan: itineraries[0].itineraries,
               })
             }
-
           }
         })
         //请求第二个api,关于行程的结束
@@ -119,27 +126,11 @@ Page({
           }
         });
         //访问一次服务器 ---end
-
-
       }
     })
     //请求缓存结束
   },
 
-
-  //picker组件的触发事件
-  pickDayCount: function (e) {
-    console.log(e.detail.value);
-
-    let title = this.data.itineraries[e.detail.value].description; //字符串
-    let obj = this.data.itineraries[e.detail.value].itineraries; //数组
-    this.setData({
-      dayCountIndex: e.detail.value,
-      title: title,
-      plan: obj
-    });
-    console.log(this.data.plan);
-  },
   //点击每一天的计划可以弹出一个消息框，其中有路程帮助信息
   routeHelp: function (e) {
     console.log("餐饮信息");
@@ -157,7 +148,7 @@ Page({
       }
     });
   },
-  clickAbstract:function(e){
+  clickAbstract: function (e) {
     let description = this.data.description;
     wx.showModal({
       title: '详细描述',
@@ -172,6 +163,21 @@ Page({
     });
   },
 
-
-
+  //手风琴组件函数
+  onChange(event) {
+    const { key } = event.currentTarget.dataset;
+    this.setData({
+      [key]: event.detail
+    });
+  },
+  //标签点击
+  tabsOnClick(event) {
+    let index = event.detail.index;
+    let title = this.data.itineraries[index].description; //字符串
+    let obj = this.data.itineraries[index].itineraries; //数组
+    this.setData({
+      title: title,
+      plan: obj
+    });
+  },
 })
