@@ -7,7 +7,7 @@
             </view>
         </block>
     </view>
-    <view class="data" style="margin-top:30rpx;">
+    <view class="data" >
         <block wx:for="{{totalWeatherData}}" wx:for-index="index" wx:key="this">
             <view class="block">{{item.max}}</view>
         </block>

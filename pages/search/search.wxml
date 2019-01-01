@@ -1,17 +1,16 @@
 <!-- pages/search/search.wxml -->
 <!-- 头部信息以及搜索 -->
 <view class="top">
-    <image class="smallImg" src="../../img/place/GPS.png"  />
-      
-    <view class="defaultCity">{{defaultCity}}:</view>
+    <view class="defaultCity">{{defaultCity}}</view>
     <view class="search">
-        <input type="text" bindinput="inputInput" />
-        <icon type="search" bindtap="search" />
+        <input type="text" class="{{inputIsFocus?'focus':''}}" bindfocus="inputFocus" bindblur="inputFocus" bindinput="inputInput" value="江汉路" />
+        <van-button type="primary" class="demo-margin-right" bindtap="search" size="small">
+            搜索
+        </van-button>
+        <!-- <icon type="search" bindtap="search" /> -->
     </view>
 </view>
-<view class="tips">tips:请输入人气地点</view>
 <!-- 选择类别 -->
-
 <view class="option">
     <block wx:for="{{imgArray}}" wx:for-index="index" wx:key="this">
         <view class="oneOption " bindtap="optionClick" data-text="{{index}}">
@@ -26,6 +25,8 @@
 <view class="body">
     <block wx:for="{{list}}" wx:for-index="index" wx:key="this">
         <view class="oneResult" bindtap="routeHelp" id="{{index}}">{{index+1}}：{{item.name}}</view>
+        
     </block>
 </view>
 <view wx:if="{{tipsIsShow}}" class="tips">tips:触摸列表有提示</view>
+<van-notify id="custom-selector" />

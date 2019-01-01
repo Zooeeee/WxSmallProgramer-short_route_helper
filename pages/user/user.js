@@ -1,10 +1,10 @@
 // pages/user/user.js
+import Dialog from '../../dist/dialog/dialog';
 Page({
     data: {
         nickName: '',
         places: [],
         deletePlaces: [],
-        editFlag: false,//true是编辑界面 false是一般界面
         isDelete: []    //存放每个条目的状态
     },
 
@@ -43,67 +43,70 @@ Page({
         });//request -----end
     },
     //onShow 结束
-    delete: function (e) {
-        let value = e.currentTarget.id;
+    //滑动单元格
+    onClose(event) {
+        let that = this ;
+        const { position, instance } = event.detail;
+        switch (position) {
+            case 'left':
+                console.log("左边");
+                console.log(instance.id);
+                wx.setStorage({
+                    key: 'defaultCity',
+                    data: instance.id
+                });
+                wx.switchTab({
+                    url: '../place/place'
+                })
+                instance.close();
+                break;
+            case 'cell':
+                console.log("cell");
+                console.log(instance.id);
+                instance.close();
+                break;
+            case 'right':
+                console.log("右边");
+                console.log(instance.id);
+                Dialog.confirm({
+                    message: '确定删除吗？'
+                }).then(() => {
+                    that.delete(instance.id);
+                    wx.request({
+                        url: 'http://192.168.1.107:3000/deletePlace',
+                        method: 'delete',
+                        data: {
+                            nickName: this.data.nickName,
+                            deletePlace: instance.id,
+                        }
+                    })
+                    console.log(that.data.places);
+                    if(that.data.places.length == 0 ){
+                        wx.setStorageSync('defaultCity', '北京市');
+                    }
+                    else{
+                        wx.setStorageSync('defaultCity', that.data.places[0]);
+                    }
+                   
+                });
+                instance.close();
+                break;
+        }
+    },
+
+    delete: function (value) {
+        console.log("delete函数")
         let index = this.data.places.indexOf(value);
         let newIsDelete = this.data.isDelete;
         newIsDelete[index] = true;
-        //上述代码改变条目的状态
-        let newDeletePlaces = this.data.deletePlaces
-        if (newDeletePlaces.indexOf(value) == -1) {
-            newDeletePlaces.push(value); //如果删除地点中没有
-        }
+        let newPlaces = this.data.places;
+        newPlaces.splice(index,1);
         this.setData({
             isDelete: newIsDelete,
-            deletePlaces: newDeletePlaces
-        })
-
+            places:newPlaces
+        });
     },
 
-    //保存/编辑的改变
-    clickEdit: function (e) {
-        let newFlag = !this.data.editFlag;
-        this.setData({ editFlag: newFlag });
-    },
-
-    //点击保存按钮之后
-    clickSave: function (e) {
-        let that = this ;
-        let newFlag = !this.data.editFlag;
-        this.setData({ editFlag: newFlag });
-        console.log(this.data.deletePlaces);
-        wx.request({
-            url:'http://192.168.1.107:3000/deletePlace',
-            method:'delete',
-            data:{
-                nickName:that.data.nickName,
-                deletePlaces:that.data.deletePlaces,
-            },
-            success:function(res){
-                console.log("发送delete成功");
-                that.setData({
-                    deletePlaces:[],
-                    places:[]
-                })
-                that.onShow();
-            }
-        });
-    },//点击保存按钮-----end
-    search:function(e){
-        let that = this ;
-        let value = e.currentTarget.id;
-        console.log(value);
-        wx.setStorage({
-            key: 'defaultCity',
-            data: value,
-        });
-        wx.showToast({
-            title: '加载',
-            icon: 'loading',
-            duration: 1000,
-            mask:true
-        })
-    }
 
 
 })

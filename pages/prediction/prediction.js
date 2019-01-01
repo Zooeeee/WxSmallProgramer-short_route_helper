@@ -81,14 +81,14 @@ Page({
                     })
                 };
                 let totalHelpData = [];
-                for (let i = 0; i < titles.length; i++) {
+                for (let i = 0; i < titles.length-1; i++) {
                     totalHelpData.push({
                         title: titles[i],
                         zs: zss[i],
                         des: dess[i],
                     })
                 };
-                totalHelpData[4].title = '紫外线';
+               // totalHelpData[4].title = '紫外线';
                 that.setData({
                     totalWeatherData: totalWeatherData,
                     totalHelpData: totalHelpData,

@@ -112,7 +112,7 @@ Page({
             'content-type': 'Application/json'
           },
           success: function (res) {
-            console.log("访问服务器成功");
+            console.log("添加默认城市");
           },
           fail: function (err) {
             console.log(err);

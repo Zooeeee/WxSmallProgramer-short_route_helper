@@ -1,4 +1,6 @@
 // pages/search/search.js
+import Notify from '../../dist/notify/notify';
+import Dialog from '../../dist/dialog/dialog';
 Page({
 
     /**
@@ -23,7 +25,9 @@ Page({
             { src: "./img/jiaotong.png", value: "交通设施" },
         ],
         click: 0,
-        tipsIsShow:false
+        tipsIsShow:false,
+        input:"",
+        inputIsFocus:false
     },
 
     /**
@@ -118,11 +122,12 @@ Page({
                 console.log(res.data.pointList); */
                 if (res.data.pointList.length == 0) {
                     console.log("请求的数据长度为0");
-                    wx.showToast({
+                    that.showNotify2();//调用顶层弹出栏
+                   /*  wx.showToast({
                         title: '没有找到该地点',
                         icon: 'none',
                         duration: 1500
-                    })
+                    }) */
                 }
                 else
                 that.setData({
@@ -157,8 +162,21 @@ Page({
             click: e.currentTarget.dataset.text
         });
         this.search();
-    }
+    },
+    //input聚焦
+    inputFocus:function(e){
+        this.setData({
+            inputIsFocus:!this.data.inputIsFocus
+        })
+    },
 
-
-
+    //顶层弹出栏 只在查不到时弹出
+    showNotify2() {
+        Notify({
+          duration: 1500,
+          text: '查不到该地点，请换个更有名的',
+          selector: '#custom-selector',
+          backgroundColor: 'red'
+        });
+      },
 })

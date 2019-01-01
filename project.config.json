@@ -53,14 +53,26 @@
 				},
 				{
 					"id": 2,
-					"name": "prediction",
+					"name": "predictionBeijing",
 					"pathName": "pages/prediction/prediction",
+					"query": "defaultCity=\"北京市\""
+				},
+				{
+					"id": 3,
+					"name": "search",
+					"pathName": "pages/search/search",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "prediction",
-					"pathName": "pages/prediction/prediction",
+					"name": "user",
+					"pathName": "pages/user/user",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "test",
+					"pathName": "pages/test/test",
 					"query": ""
 				}
 			]
