@@ -1,15 +1,13 @@
-<view class="container">
+<view class="box6 container ">
     <view class="top">
         <view class="avatar">
             <open-data type="userAvatarUrl"></open-data>
         </view>
         <open-data type="userNickName"></open-data>
     </view>
-    <view >
-        云端记录
-    </view>
-      
+    <view>云端记录:</view>
     <view class="body">
+          <scroll-view style="height:600rpx;margin-top:30rpx" scroll-x="false" scroll-y="true">
         <block wx:for="{{places}}" wx:for-index="index" wx:key="this">
             <van-swipe-cell id="{{item}}" class="swipe-cell {{isDelete[index]?'delete':''}}" right-width="{{ 65 }}" left-width="{{ 65 }}" async-close bind:close="onClose">
                 <view slot="left" class="van-swipe-cell__left">前往</view>
@@ -19,6 +17,7 @@
                 <view slot="right" class="van-swipe-cell__right">删除</view>
             </van-swipe-cell>
         </block>
+        </scroll-view>
     </view>
 </view>
 <van-dialog id="van-dialog" />

@@ -4,7 +4,6 @@
         "pages/welcome/welcome",
         "pages/search/search",
         "pages/place/place",
-        "pages/test/test",
         "pages/selectCity/selectCity",
         "pages/prediction/prediction"
     ],

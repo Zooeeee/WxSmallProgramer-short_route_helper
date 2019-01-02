@@ -6,8 +6,8 @@ page{
     align-items: center;
 }
 
+
 .top{
-    margin-top:15rpx;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -18,9 +18,9 @@ page{
       
     }
 .top-up {
-    height: 60rpx;
+    height: 90rpx;
     background-color: #ff5f00;
-    border-radius: 30rpx;
+    border-radius: 20rpx;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -77,12 +77,9 @@ page{
     justify-content: center;
 }
 
+
 .content {
     padding: 20px;
     background-color: #fff;
   }
 
-  .click{
-      height: 30rpx;
-      width:30rpx;
-  }

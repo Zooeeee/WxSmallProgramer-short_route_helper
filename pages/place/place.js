@@ -11,7 +11,7 @@ Page({
     itineraries: [],
     title: "",
     plan: [],
-
+    isShow:false
   },
 
   onLoad: function (e) {
@@ -83,6 +83,7 @@ Page({
                 title: "",
                 dayCount: [],
                 plan: [],
+                 isShow:false 
               })
             }
             //有出行信息
@@ -97,6 +98,7 @@ Page({
                 title: itineraries[0].description,
                 dayCount: getItineraries.getPickers(itineraries),
                 plan: itineraries[0].itineraries,
+                isShow:true
               })
             }
           }

@@ -1,16 +1,22 @@
 <!-- pages/search/search.wxml -->
 <!-- 头部信息以及搜索 -->
 <view class="top">
-    <view class="defaultCity">{{defaultCity}}</view>
+    <view class="defaultCity">
+        <navigator url="../selectCity/selectCity">
+            <image src="../../img/place/gps.png" />
+            <text>{{defaultCity}}</text>
+            
+        </navigator>
+    </view>
     <view class="search">
-        <input type="text" class="{{inputIsFocus?'focus':''}}" bindfocus="inputFocus" bindblur="inputFocus" bindinput="inputInput" placeholder="如:故宫" />
+        <input type="text" class="{{inputIsFocus?'focus':''}}" bindfocus="inputFocus" bindblur="inputFocus" bindinput="inputInput" placeholder="风景名胜,道路" />
         <van-button type="primary" class="demo-margin-right" bindtap="search" size="small">
             搜索
         </van-button>
     </view>
 </view>
 <!-- 选择类别 -->
-<view class="option">
+<view class="option  litixiayinying">
     <block wx:for="{{imgArray}}" wx:for-index="index" wx:key="this">
         <view class="oneOption " bindtap="optionClick" data-text="{{index}}">
             <view>
@@ -22,7 +28,7 @@
 </view>
 <!-- 搜索结果清单 -->
 <view class="body">
-    <scroll-view style="height:600rpx;" scroll-x="false" scroll-y="true">
+    <scroll-view style="height:600rpx;margin-top:30rpx" scroll-x="false" scroll-y="true">
         <van-collapse value="{{ active1 }}" data-key="active1" bind:change="onChange">
             <block wx:for="{{list}}" wx:for-index="index" wx:key="this">
                 <van-collapse-item title="{{item.name}}">{{item.address}}</van-collapse-item>
@@ -30,4 +36,7 @@
         </van-collapse>
     </scroll-view>
 </view>
+<view class="foot" >  
+</view>
+  
 <van-notify id="custom-selector" />

@@ -1,27 +1,32 @@
 page{
-   margin-top: 30rpx;
    text-align: center;
    padding: 0;
 }
 .top{
     text-align:center;
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
+.top image{
+    width: 40rpx;
+    height: 40rpx;
+}
 .defaultCity{
-    position: absolute;
-    top: 40rpx;
-    left: 20rpx;
-    font-size:50rpx;
-    font-family:"楷体";
-    height:120rpx;
-    width:60rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    background-color: #ff5f00;
+    color: white;
+    width: 95%;
+    border-radius: 25rpx;
 }
 
+
 .search{
-    margin-top: 50rpx;
+    margin-top:10rpx;
     display: flex;
     flex-direction: row;
     align-items:center;
@@ -60,6 +65,8 @@ page{
     border-radius: 20rpx;
 }
 
+
+
 .oneOption{
     display: flex;
     flex-direction: column; 
@@ -76,7 +83,6 @@ page{
 .oneOptionImgClick{
     width:130rpx;
     height:130rpx;
-    background-color: #e0e5eb;
     border-radius: 20rpx;
 }
 .oneOptionPClick{
