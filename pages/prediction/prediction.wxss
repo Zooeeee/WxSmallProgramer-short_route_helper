@@ -2,6 +2,7 @@
 page{
     width: 100%;
     margin: 0;
+    background-color: whitesmoke;
 }
 
 .container{
@@ -67,4 +68,11 @@ ec-canvas {
 .title-class{
     color:blue;
     font-size: 100rpx;
+}
+
+.font1{
+    font-style: inherit;
+}
+.border{
+    border:1px solid rgb(238, 230, 230);background-color:whitesmoke;
 }

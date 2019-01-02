@@ -14,7 +14,9 @@
                     <image class="icon" src="{{item.weatherIcon}}" />
                     <text class="weatherFont">{{item.weather}}</text>
                 </view>
-                <view class="block">{{item.max}}</view>
+                <view class="block font1">
+                    {{item.max}}
+                </view>
             </view>
         </block>
     </view>
@@ -29,9 +31,9 @@
             </view>
         </block>
     </view>
-    <view class="data" style="margin-top:60rpx;">
+    <view class="data" style="margin-top:20rpx;">
         <block wx:for="{{totalHelpData}}" wx:for-index="index" wx:key="this">
-            <view class="height block">
+            <view class="height block border">
                 <image id="{{index}}" bindtap="clickHelp" class="icon" src="../../img/prediction/{{item.title}}.png" />
                 <view>{{item.zs}}</view>
             </view>
