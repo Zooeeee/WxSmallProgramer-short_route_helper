@@ -1,5 +1,5 @@
 .foot{  
-     background: white;
+    background: white;
     margin: 20px auto;
     width: 100%;
     padding:20px;
@@ -7,4 +7,10 @@
     -webkit-box-shadow: 0 10px 6px -6px #777;
     -moz-box-shadow: 0 10px 6px -6px #777;
     box-shadow: 0 10px 6px -6px #777;
+}
+.font1{
+    font-family: 'font1'
+}
+.font2{
+    font-family: 'font2'
 }

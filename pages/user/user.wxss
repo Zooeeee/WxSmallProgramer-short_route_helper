@@ -5,6 +5,7 @@ page{
     display:flex;
     justify-content: center;
     align-items: center;
+    background-color: whitesmoke;
  }
 .container{
     width: 100%;
@@ -109,9 +110,12 @@ page{
       width: 100%;
   }
 
+  .kaiti{
+      font-family: 'font2';
+      font-size: 50rpx;
+  }
 
-
-  .box6{
+  .box{
     width: 90%;
     min-height: 150px;
 
@@ -127,7 +131,7 @@ page{
     
 }
 
-.box6:before{
+.box:before{
     content:'';    
     width: 25px;
     height: 20px;
@@ -142,7 +146,7 @@ page{
     translate(-13px,-13px);
 }
 
-.box6:after{
+.box:after{
     content: '';
     z-index: -10;
     width: 100px;
@@ -157,7 +161,7 @@ page{
                         translate(-45px,-20px)
                            skew(20deg);
 }
-.box6_corner_lf{
+.box_corner_lf{
     width: 100px;
     height: 100px;
     top:0; left:0;
@@ -170,7 +174,7 @@ page{
                            skew(20deg);
 }
 
-.box6_corner_rt{
+.box_corner_rt{
     content: '';
     width: 50px;
     height: 50px;

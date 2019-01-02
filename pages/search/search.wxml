@@ -4,8 +4,7 @@
     <view class="defaultCity">
         <navigator url="../selectCity/selectCity">
             <image src="../../img/place/gps.png" />
-            <text>{{defaultCity}}</text>
-            
+            <text >{{defaultCity}}</text>
         </navigator>
     </view>
     <view class="search">

@@ -1,25 +1,24 @@
 <!-- pages/today/today.wxml -->
-<view class="top ">
+<view class="top font1">
   <view class="top-up ">
     <label>
       <navigator url="../selectCity/selectCity">
         <image src="../../img/place/gps.png" />
-        <text>{{defaultCity}}</text>
+        <text >{{defaultCity}}</text>
         <image src="../../img/place/downSelect.png" />
       </navigator>
     </label>
     <view>
-      <text>温度:{{temperature}}</text>
+      <text >温度:{{temperature}}</text>
     </view>
   </view>
-  <view style="margin-top:30rpx;text-align:center;font-size:35rpx;">{{date}}</view>
+  <view class="date font1">{{date}}</view>
 </view>
-<view class="weather">
+<view class="weather  font1">
   <image src="{{weatherIconSrc}}" />
   <view>{{weather}}</view>
 </view>
 <view class="description">
-  <!-- <view bindtap="clickAbstract">{{abstract}}</view> -->
   <van-cell title="{{defaultCity}}" is-link arrow-direction="down" value="" icon="location-o" label="{{abstract}}" size="large" border="{{ false }}" bindtap="clickAbstract" />
 </view>
 <view class="body" wx:if="{{isShow}}">

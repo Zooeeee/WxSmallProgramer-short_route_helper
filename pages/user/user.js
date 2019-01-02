@@ -5,7 +5,6 @@ Page({
         nickName: '',
         places: [],
         deletePlaces: [],
-        isDelete: []    //存放每个条目的状态
     },
 
     /**
@@ -29,13 +28,8 @@ Page({
             method: 'post',
             data: { nickName: that.data.nickName },
             success: function (res) {
-                let isDelete = [] //存放每个条目的状态
-                for (let i = 0; i < res.data.length; i++) {
-                    isDelete.push(false);
-                }
                 that.setData({
                     places: res.data,
-                    isDelete: isDelete,
                     deletePlaces: []
                 })
                 console.log(that.data.places);
@@ -45,7 +39,7 @@ Page({
     //onShow 结束
     //滑动单元格
     onClose(event) {
-        let that = this ;
+        let that = this;
         const { position, instance } = event.detail;
         switch (position) {
             case 'left':
@@ -71,23 +65,26 @@ Page({
                 Dialog.confirm({
                     message: '确定删除吗？'
                 }).then(() => {
+                    console.log("right方法中的值");
+                    let deletePlace = instance.id;
                     that.delete(instance.id);
+                    console.log("instance.id", instance.id);
                     wx.request({
                         url: 'http://192.168.1.107:3000/deletePlace',
                         method: 'delete',
                         data: {
                             nickName: this.data.nickName,
-                            deletePlace: instance.id,
+                            deletePlace: deletePlace,
                         }
                     })
                     console.log(that.data.places);
-                    if(that.data.places.length == 0 ){
+                    if (that.data.places.length == 0) {
                         wx.setStorageSync('defaultCity', '北京市');
                     }
-                    else{
+                    else {
                         wx.setStorageSync('defaultCity', that.data.places[0]);
                     }
-                   
+
                 });
                 instance.close();
                 break;
@@ -96,14 +93,15 @@ Page({
 
     delete: function (value) {
         console.log("delete函数")
+        console.log("delete删除的是", value);
+        console.log("places:", this.data.places);
         let index = this.data.places.indexOf(value);
-        let newIsDelete = this.data.isDelete;
-        newIsDelete[index] = true;
+        console.log("index:", index);
         let newPlaces = this.data.places;
-        newPlaces.splice(index,1);
+        newPlaces.splice(index, 1);
+        console.log("newPlaces:", newPlaces)
         this.setData({
-            isDelete: newIsDelete,
-            places:newPlaces
+            places: newPlaces
         });
     },
 

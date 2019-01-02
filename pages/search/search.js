@@ -64,7 +64,35 @@ Page({
                 })
             }
         });
-
+        /////////////////////////
+        //请求nickName缓存
+    wx.getStorage({
+        key: 'nickName',
+        success: function (res) {
+          console.log(res.data);
+          console.log(that.data.defaultCity);
+          //访问服务器
+          wx.request({
+            url: 'http://192.168.1.107:3000/addPlace',//指向服务器地址
+            method: "post",
+            data: {
+              nickName: res.data,
+              city: that.data.defaultCity
+            },
+            header: {
+              'content-type': 'Application/json'
+            },
+            success: function (res) {
+              console.log("添加默认城市");
+            },
+            fail: function (err) {
+              console.log(err);
+            }
+          });
+          //访问一次服务器 ---end
+        }
+      })
+      //请求缓存结束
 
     },
 

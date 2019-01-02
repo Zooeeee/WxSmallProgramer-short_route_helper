@@ -14,7 +14,10 @@ Page({
     isShow:false
   },
 
+  
+
   onLoad: function (e) {
+
   },
   onReady: function (e) {
   },

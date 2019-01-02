@@ -12,6 +12,7 @@ page{
     display: flex;
     flex-direction: column;
     justify-content:space-around;
+    
 }
 .top view{
     font-size: 30rpx;
@@ -28,12 +29,10 @@ page{
     align-items:center;
     color:white;
 }
-
 .top image{
     height: 40rpx;
     width: 40rpx;
 }
-
 
 .top navigator{
     display: flex;
@@ -54,11 +53,15 @@ page{
 }
 .weather view{
     font-size: 35rpx;
-   
+}
+.date{
+    margin-top:30rpx;
+    text-align:center;
+    font-size:40rpx;
 }
 
-
 .description{
+    width: 92%;
     display: flex;
     flex-direction: column;  
     justify-content:center;

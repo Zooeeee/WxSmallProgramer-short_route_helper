@@ -168,12 +168,22 @@ Page({
                 name: '最高温',
                 type: 'line',
                 smooth: true,
-                data: dataList.tempsMax
+                data: dataList.tempsMax,
+                itemStyle:{
+                    normal:{
+                        color:'red'
+                    }
+                },
               }, {
                 name: '最低温',
                 type: 'line',
                 smooth: true,
-                data: dataList.tempsMin
+                data: dataList.tempsMin,
+                itemStyle:{
+                    normal:{
+                        color:'blue'
+                    }
+                }
               }]
         }
         return option;
