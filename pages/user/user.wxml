@@ -7,12 +7,12 @@
     </view>
     <view class="kaiti">云端记录:</view>
     <view class="body ">
-          <scroll-view style="height:600rpx;margin-top:30rpx" scroll-x="false" scroll-y="true">
+          <scroll-view style="height:550rpx;margin-top:30rpx" scroll-x="false" scroll-y="true">
         <block wx:for="{{places}}" wx:for-index="index" wx:key="this">
             <van-swipe-cell id="{{item}}" class="swipe-cell {{isDelete[index]?'delete':''}}" right-width="{{ 65 }}" left-width="{{ 65 }}" async-close bind:close="onClose">
                 <view slot="left" class="van-swipe-cell__left">前往</view>
                 <van-cell-group>
-                    <van-cell title="{{index+1+':'+item}}" value="" />
+                    <van-cell  title="{{index+1+':'+item}}" value="" />
                 </van-cell-group>
                 <view slot="right" class="van-swipe-cell__right">删除</view>
             </van-swipe-cell>

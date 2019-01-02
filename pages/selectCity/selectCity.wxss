@@ -1,4 +1,8 @@
 /*右边的选择首字母的滑动列表*/
+page{
+  font-family: 'font1'
+}
+
 .searchLetter {
   position: fixed;
   right: 0;
