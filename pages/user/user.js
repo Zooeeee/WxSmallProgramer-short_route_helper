@@ -9,6 +9,7 @@ Page({
         nickName: '',
         places: [],
         deletePlaces: [],
+        userMode:''
     },
     onLoad: function () {
         wx.loadFontFace({
@@ -37,25 +38,31 @@ Page({
         let that = this;
         console.log("user.js的onshow函数")
         let nickName = app.globalData.nickName;
-        that.setData({
-            nickName: nickName
-        });
         //获取缓存信息结束
         //将请求到的palces存到data
-        if (that.data.nickName !== null) {
+        if (nickName !== null) {
+            console.log("用户模式")
             wx.request({
                 url: app.globalData.serverHttp + '/getAllPlace',
                 method: 'post',
-                data: { nickName: that.data.nickName },
+                data: { nickName},
                 success: function (res) {
                     that.setData({
                         places: res.data,
-                        deletePlaces: []
+                        deletePlaces: [],
+                        nickName:nickName,
+                        userMode:true
                     })
                     console.log(that.data.places);
                 }
             })
-        };//request -----end
+        }//request -----end
+        else{
+            console.log("游客模式")
+            that.setData({
+                userMode:false
+            })
+        }
     },
     //onShow 结束
     //滑动单元格

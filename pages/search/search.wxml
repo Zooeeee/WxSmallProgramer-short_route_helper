@@ -39,3 +39,4 @@
 </view>
   
 <van-notify id="custom-selector" />
+<van-dialog id="van-dialog" />

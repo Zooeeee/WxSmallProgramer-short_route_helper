@@ -27,7 +27,6 @@ Page({
             { src: app.globalData.serverHttp + "/static/search/jiaotong.png", value: "交通设施" },
         ],
         click: 0,
-        tipsIsShow: false,
         input: "",
         inputIsFocus: false
     },
@@ -146,32 +145,39 @@ Page({
     //搜索
     search: function (e) {
         let that = this;
-        wx.request({
-            url: "http://api.map.baidu.com/telematics/v3/point?&output=json&ak=w65uwmj5P2rqqpGv8iunSyyKgLke1bZo&" +
-                "cityName=" + that.data.defaultCity +
-                "&tag=" + that.data.class +
-                "&keyWord=" + that.data.input,
-            success: function (res) {
-                /* console.log("picker:" + that.data.class);
-                console.log("input内容:" + that.data.input);
-                console.log("请求成功");
-                console.log(res.data.pointList); */
-                if (res.data.pointList.length == 0) {
-                    console.log("请求的数据长度为0");
-                    that.showNotify2();//调用顶层弹出栏
-                    /*  wx.showToast({
-                         title: '没有找到该地点',
-                         icon: 'none',
-                         duration: 1500
-                     }) */
+        console.log("that.data.input:",that.data.input);
+        if (that.data.input !== '') {
+            console.log("input不空")
+            wx.request({
+                url: "http://api.map.baidu.com/telematics/v3/point?&output=json&ak=w65uwmj5P2rqqpGv8iunSyyKgLke1bZo&" +
+                    "cityName=" + that.data.defaultCity +
+                    "&tag=" + that.data.class +
+                    "&keyWord=" + that.data.input,
+                success: function (res) {
+                    /* console.log("picker:" + that.data.class);
+                    console.log("input内容:" + that.data.input);
+                    console.log("请求成功");
+                    console.log(res.data.pointList); */
+                    if (res.data.pointList.length == 0) {
+                        console.log("请求的数据长度为0");
+                        that.showNotify('查不到该地点，请换个更有名的');//调用顶层弹出栏
+                        /*  wx.showToast({
+                             title: '没有找到该地点',
+                             icon: 'none',
+                             duration: 1500
+                         }) */
+                    }
+                    else
+                        that.setData({
+                            list: res.data.pointList
+                        })
                 }
-                else
-                    that.setData({
-                        list: res.data.pointList,
-                        tipsIsShow: true
-                    })
-            }
-        })
+            })
+        }
+        else{
+            console.log("input空")
+            that.showNotify('请输入地点');//调用顶层弹出栏
+        }
 
     },//搜索结束
 
@@ -193,10 +199,10 @@ Page({
     },
 
     //顶层弹出栏 只在查不到时弹出
-    showNotify2() {
+    showNotify(text) {
         Notify({
             duration: 1500,
-            text: '查不到该地点，请换个更有名的',
+            text: text,
             selector: '#custom-selector',
             backgroundColor: 'red'
         });

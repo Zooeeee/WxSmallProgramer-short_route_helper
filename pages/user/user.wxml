@@ -6,7 +6,7 @@
         <open-data type="userNickName"></open-data>
     </view>
     <view class="kaiti">云端记录:</view>
-    <view class="kaiti" wx:if="{{nickName==null}}">
+    <view class="kaiti" wx:if="{{!userMode}}">
         游客模式
     </view>
       
