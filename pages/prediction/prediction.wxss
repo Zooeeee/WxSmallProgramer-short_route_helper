@@ -6,6 +6,7 @@ page{
 }
 
 .container{
+    margin-top: 30rpx;
     width: 100%;
     display:flex;
     flex-direction: column;
@@ -42,9 +43,13 @@ page{
     flex-direction: column;
     justify-content: space-between;
     align-items:center;
+    width: 170rpx;
+   /*  border: 1rpx solid #000; */
 }
 
-
+.weather{
+    font-size: 30rpx;
+}
 
 .icon{
     height: 80rpx;
@@ -75,3 +80,9 @@ ec-canvas {
     border:5rpx solid rgb(238, 230, 230);background-color:whitesmoke;
 }
 
+.heiti{
+    font-family: 'heiti'
+}
+.kaiti{
+    font-family: 'kaiti'
+}

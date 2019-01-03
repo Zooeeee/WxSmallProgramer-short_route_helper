@@ -17,9 +17,33 @@ Page({
             lazyLoad: true // 延迟加载
         }
     },
-    //onload函数处理wxml中关于时间的部分 不需要刷新所以放在onload中
     onLoad: function (e) {
-
+        wx.loadFontFace({
+            family: 'heiti',
+            source: 'url('+app.globalData.serverHttp+'/static/heiti.ttf'+')',
+            success(res) {
+              console.log(res.status)
+            },
+            fail: function(res) {
+              console.log(res.status)
+            },
+            complete: function(res) {
+              console.log(res.status)
+            }
+          });
+          wx.loadFontFace({
+            family: 'kaiti',
+            source: 'url('+app.globalData.serverHttp+'/static/kaiti.ttf'+')',
+            success(res) {
+              console.log(res.status)
+            },
+            fail: function(res) {
+              console.log(res.status)
+            },
+            complete: function(res) {
+              console.log(res.status)
+            }
+          }); 
     },
     //页面初次渲染完成
     onReady: function () {

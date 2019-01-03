@@ -56,7 +56,6 @@ page {
     font-size: 19px; /* 字体大小 */
     font-family: Microsoft YaHei; /* 设置字体 */
     background-color: rgba(255,255,255,0.9);
-   background-color: wheat;
    /*  border: 1px solid #000000; */
     animation: fade-in;/*动画名称*/  
     animation-duration:1.5s;/*动画持续时间*/   

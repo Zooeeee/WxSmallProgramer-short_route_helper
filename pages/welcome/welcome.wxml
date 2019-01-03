@@ -3,7 +3,6 @@
     <view class="container one" >
         <image class="img" src="../../img/welcome/qiqiu.png" /> 
     </view>
-      
     <view  class="container two">
         <button class="btn"  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
             <p>开 始 体 验</p> 

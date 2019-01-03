@@ -8,14 +8,14 @@
         </navigator>
     </view>
     <view class="search">
-        <input type="text" class="{{inputIsFocus?'focus':''}}" bindfocus="inputFocus" bindblur="inputFocus" bindinput="inputInput" placeholder="风景名胜,道路" />
-        <van-button type="primary" class="demo-margin-right" bindtap="search" size="small">
+        <input type="text" class="{{inputIsFocus?'focus':''}} " bindfocus="inputFocus" bindblur="inputFocus" bindinput="inputInput" placeholder="风景名胜,道路" />
+        <van-button type="primary" class="demo-margin-right " bindtap="search" size="small">
             搜索
         </van-button>
     </view>
 </view>
 <!-- 选择类别 -->
-<view class="option  litixiayinying">
+<view class="option heiti ">
     <block wx:for="{{imgArray}}" wx:for-index="index" wx:key="this">
         <view class="oneOption " bindtap="optionClick" data-text="{{index}}">
             <view>

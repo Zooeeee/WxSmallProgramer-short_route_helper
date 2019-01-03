@@ -8,9 +8,3 @@
     -moz-box-shadow: 0 10px 6px -6px #777;
     box-shadow: 0 10px 6px -6px #777;
 }
-.font1{
-    font-family: 'font1'
-}
-.font2{
-    font-family: 'font2'
-}

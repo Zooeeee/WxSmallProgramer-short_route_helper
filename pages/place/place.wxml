@@ -1,5 +1,5 @@
 <!-- pages/today/today.wxml -->
-<view class="top font1">
+<view class="top heiti">
   <view class="top-up ">
     <label>
       <navigator url="../selectCity/selectCity">
@@ -12,9 +12,9 @@
       <text >温度:{{temperature}}</text>
     </view>
   </view>
-  <view class="date font1">{{date}}</view>
+  <view class="date heiti">{{date}}</view>
 </view>
-<view class="weather  font1">
+<view class="weather  heiti">
   <image src="{{weatherIconSrc}}" />
   <view>{{weather}}</view>
 </view>

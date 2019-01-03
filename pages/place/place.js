@@ -1,6 +1,6 @@
 // pages/today/today.js
 const weatherTrans = require('../../utils/weatherTrans');
-
+const app = getApp();
 Page({
   data: {
     defaultCity: '',
@@ -14,9 +14,20 @@ Page({
     isShow:false
   },
 
-  
-
   onLoad: function (e) {
+    wx.loadFontFace({
+      family: 'heiti',
+      source: 'url('+app.globalData.serverHttp+'/static/heiti.ttf'+')',
+      success(res) {
+        console.log(res.status)
+      },
+      fail: function(res) {
+        console.log(res.status)
+      },
+      complete: function(res) {
+        console.log(res.status)
+      }
+    });
 
   },
   onReady: function (e) {
@@ -117,7 +128,7 @@ Page({
         console.log(that.data.defaultCity);
         //访问服务器
         wx.request({
-          url: 'http://192.168.1.107:3000/addPlace',//指向服务器地址
+          url: app.globalData.serverHttp+'/addPlace',//指向服务器地址
           method: "post",
           data: {
             nickName: res.data,
@@ -191,6 +202,13 @@ Page({
     });
   },
 
+  onShareAppMessage: function () {    
+    return {      
+        title: '自定义分享标题', 
+        desc: '自定义分享描述',
+        path: './place.wxml'
+    }  
+  }
 
 
 

@@ -1,10 +1,31 @@
 // pages/user/user.js
 import Dialog from '../../dist/dialog/dialog';
+
+
+const app = getApp();
 Page({
     data: {
         nickName: '',
         places: [],
         deletePlaces: [],
+    },
+    onLoad:function() {
+        wx.loadFontFace({
+            family: 'kaiti',
+            source: 'url('+app.globalData.serverHttp+'/static/kaiti.ttf'+')',
+            success(res) {
+              console.log(res.status)
+            },
+            fail: function(res) {
+              console.log(res.status)
+            },
+            complete: function(res) {
+              console.log(res.status)
+            }
+          });
+    },
+    onReady:function(e){
+       
     },
 
     /**
@@ -24,7 +45,7 @@ Page({
         //获取缓存信息结束
         //将请求到的palces存到data
         wx.request({
-            url: 'http://192.168.1.107:3000/getAllPlace',
+            url: app.globalData.serverHttp+'/getAllPlace',
             method: 'post',
             data: { nickName: that.data.nickName },
             success: function (res) {
@@ -70,7 +91,7 @@ Page({
                     that.delete(instance.id);
                     console.log("instance.id", instance.id);
                     wx.request({
-                        url: 'http://192.168.1.107:3000/deletePlace',
+                        url: app.globalData.serverHttp+'/deletePlace',
                         method: 'delete',
                         data: {
                             nickName: this.data.nickName,

@@ -5,7 +5,9 @@ page{
     justify-content: center;
     align-items: center;
 }
-
+.heiti{
+    font-family: 'heiti';
+}
 
 .top{
     width: 100%;

@@ -110,8 +110,10 @@ page{
       width: 100%;
   }
 
+
+
   .kaiti{
-      font-family: 'font2';
+      font-family: 'kaiti';
       font-size: 50rpx;
   }
 

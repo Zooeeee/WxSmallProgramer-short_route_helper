@@ -1,8 +1,8 @@
 // pages/search/search.js
 import Notify from '../../dist/notify/notify';
 import Dialog from '../../dist/dialog/dialog';
+const app = getApp();
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -35,7 +35,19 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        wx.loadFontFace({
+            family: 'heiti',
+            source: 'url('+app.globalData.serverHttp+'/static/heiti.ttf'+')',
+            success(res) {
+              console.log(res.status)
+            },
+            fail: function(res) {
+              console.log(res.status)
+            },
+            complete: function(res) {
+              console.log(res.status)
+            }
+          });
     },
 
     /**
@@ -73,7 +85,7 @@ Page({
           console.log(that.data.defaultCity);
           //访问服务器
           wx.request({
-            url: 'http://192.168.1.107:3000/addPlace',//指向服务器地址
+            url: app.globalData.serverHttp+'/addPlace',//指向服务器地址
             method: "post",
             data: {
               nickName: res.data,

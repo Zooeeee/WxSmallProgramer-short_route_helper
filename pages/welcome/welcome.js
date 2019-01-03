@@ -1,9 +1,14 @@
+const app = getApp();
 Page({
   data: {
   },
   onLoad: function (options) {
+  },//onLoad结束
+  bindGetUserInfo(e) {
+    this.getLocation();
     let that = this;
     // 查看是否授权
+    ///
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
@@ -12,22 +17,29 @@ Page({
             success(res) {
               //console.log(res.userInfo);
               let nickName = res.userInfo.nickName;
-              that.setData({
-                nickName:nickName
-              })
+              console.log('getSetting：nickName', nickName)
             }
           })//getUserInfo ---end
         }
       }
     });
+     // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+     wx.getUserInfo({
+      success(res) {
+        //console.log(res.userInfo);
+        let nickName = res.userInfo.nickName;
+        console.log('getSetting：nickName', nickName)
+        wx.setStorage({
+          key:'nickName',
+          value:nickName
+        })
+      }
+    })//getUserInfo ---end
     //授权结束
     //访问一次服务器 把nickName发到服务器
-   
+    ///
 
-  },//onLoad结束
-  bindGetUserInfo(e) {
-    let that = this ;
-    console.log(e.detail.userInfo);
+    console.log('用户信息:', e.detail.userInfo);
     this.setData({
       url: e.detail.userInfo.avatarUrl
     });
@@ -35,7 +47,7 @@ Page({
     this.getLocation();
     //访问服务器
     wx.request({
-      url: 'http://192.168.1.107:3000/nickName',//指向服务器地址
+      url: app.globalData.serverHttp + '/nickName',//指向服务器地址
       method: "post",
       data: {
         nickName: that.data.nickName
@@ -48,11 +60,13 @@ Page({
       }
     });
     //访问一次服务器 ---end
-    console.log("访问服务器之后"+that.data.nickName);
+    console.log("访问服务器之后此处的昵称" + that.data.nickName);
     wx.setStorage({//往缓存中放nickName
-      key:'nickName',
-      data:that.data.nickName
+      key: 'nickName',
+      data: that.data.nickName
     });//
+
+    /*   wx.setStorageSync('nickName',that.data.nickName); */
   },
 
 
