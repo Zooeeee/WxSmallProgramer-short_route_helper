@@ -40,10 +40,10 @@ Page({
         that.setData({
             nickName: nickName
         });
-
         //获取缓存信息结束
         //将请求到的palces存到data
-        wx.request({
+        if (that.data.nickName !== null) {
+            wx.request({
                 url: app.globalData.serverHttp + '/getAllPlace',
                 method: 'post',
                 data: { nickName: that.data.nickName },
@@ -54,14 +54,15 @@ Page({
                     })
                     console.log(that.data.places);
                 }
-            });//request -----end
-        },
-            //onShow 结束
-            //滑动单元格
-            onClose(event) {
-                let that = this;
-                const { position, instance } = event.detail;
-                switch(position) {
+            })
+        };//request -----end
+    },
+    //onShow 结束
+    //滑动单元格
+    onClose(event) {
+        let that = this;
+        const { position, instance } = event.detail;
+        switch (position) {
             case 'left':
                 console.log("左边");
                 console.log(instance.id);
@@ -74,12 +75,12 @@ Page({
                 })
                 instance.close();
                 break;
-                case 'cell':
+            case 'cell':
                 console.log("cell");
                 console.log(instance.id);
                 instance.close();
                 break;
-                case 'right':
+            case 'right':
                 console.log("右边");
                 console.log(instance.id);
                 Dialog.confirm({
@@ -105,11 +106,10 @@ Page({
                     else {
                         wx.setStorageSync('defaultCity', that.data.places[0]);
                     }
-
                 });
                 instance.close();
                 break;
-            }
+        }
     },
 
     delete: function (value) {

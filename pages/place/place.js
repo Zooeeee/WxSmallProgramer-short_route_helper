@@ -1,12 +1,13 @@
 // pages/today/today.js
 const weatherTrans = require('../../utils/weatherTrans');
 import Toast from '../../dist/toast/toast';
+import Dialog from '../../dist/dialog/dialog';
 const app = getApp();
 Page({
   data: {
-    serverHttp:app.globalData.serverHttp,
+    serverHttp: app.globalData.serverHttp,
     defaultCity: '',
-    iconSrc: app.globalData.serverHttp+"/static/place/GPS.png",
+    iconSrc: app.globalData.serverHttp + "/static/place/GPS.png",
     dayCount: "",
     description: "",
     abstract: "",
@@ -26,13 +27,13 @@ Page({
     }
   },
 
- 
+
 
   onLoad: function (e) {
-    if(app.globalData.nickName == null){
+    if (app.globalData.nickName == null) {
       Toast.fail("未获得您的允许,您的记录不会被记录在云端")
     }
-    else{
+    else {
       Toast.success("获得您的允许,您的记录会被记录在云端")
     };
     wx.loadFontFace({
@@ -51,7 +52,7 @@ Page({
 
   },
   onReady: function (e) {
-   
+
   },
   onShow: function (e) {
     console.log("today.js中的onshow函数");
@@ -72,24 +73,26 @@ Page({
         });
         //发送nickName 和 place
         console.log("添加信息前的默认城市", that.data.defaultCity);
-        wx.request({
-          url: app.globalData.serverHttp + '/addPlace',//指向服务器地址
-          method: "post",
-          data: {
-            nickName: app.globalData.nickName,
-            city: that.data.defaultCity
-          },
-          header: {
-            'content-type': 'Application/json'
-          },
-          success: function (res) {
-            console.log("添加默认城市");
-          },
-          fail: function (err) {
-            console.log(err);
-          }
-        });
-        //访问一次服务器 ---end
+        if (app.globalData.nickName !== null) {
+          wx.request({
+            url: app.globalData.serverHttp + '/addPlace',//指向服务器地址
+            method: "post",
+            data: {
+              nickName: app.globalData.nickName,
+              city: that.data.defaultCity
+            },
+            header: {
+              'content-type': 'Application/json'
+            },
+            success: function (res) {
+              console.log("添加默认城市",that.data.defaultCity);
+            },
+            fail: function (err) {
+              console.log(err);
+            }
+          });
+          //访问一次服务器 ---end
+        }
         //根据defaultCity的值 去 请求api 得到预测天气数据后存入缓存区
         wx.request({
           url: 'https://api.map.baidu.com/telematics/v3/weather?output=json&ak=1a3cde429f38434f1811a75e1a90310c&location='
@@ -102,7 +105,7 @@ Page({
             let obj = e.data.results[0].weather_data[0];
             //console.log(obj);
             console.log("添加天气icon");
-            let weatherIconSrc = weatherTrans.src(obj.weather,app.globalData.serverHttp);
+            let weatherIconSrc = weatherTrans.src(obj.weather, app.globalData.serverHttp);
             that.setData({
               date: obj.date,
               temperature: obj.temperature,
@@ -162,7 +165,7 @@ Page({
       },
     });//请求缓存结束
 
-   
+
 
 
   },
@@ -172,32 +175,12 @@ Page({
     console.log("餐饮信息");
     let dinning = this.data.plan[e.target.id].dinning
     //console.log(dinning);//餐饮信息
-    wx.showModal({
-      title: '餐饮帮助',
-      content: dinning,
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else {
-          console.log('用户点击取消')
-        }
-      }
-    });
+    this.onClickAlert('餐饮帮助', dinning)
   },
 
   clickAbstract: function (e) {
     let description = this.data.description;
-    wx.showModal({
-      title: '详细描述',
-      content: description,
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else {
-          console.log('用户点击取消')
-        }
-      }
-    });
+    this.onClickAlert('详细描述', description)
   },
 
   //手风琴组件函数
@@ -218,7 +201,13 @@ Page({
     });
   },
 
-  
+  //弹出栏
+  onClickAlert(title, message) {
+    Dialog.alert({
+      title: title,
+      message: message
+    });
+  },
 
 
 

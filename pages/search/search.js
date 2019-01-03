@@ -84,38 +84,30 @@ Page({
                 that.setData({
                     defaultCity: res.data,
                     class: that.data.pickArray[0]
-                })
-            }
-        });
-        /////////////////////////
-        //请求nickName缓存
-        wx.getStorage({
-            key: 'nickName',
-            success: function (res) {
-                console.log(res.data);
-                console.log(that.data.defaultCity);
-                //访问服务器
+                }),
+                    /////////////////////////
+                    console.log("添加信息前的默认城市", that.data.defaultCity);
                 wx.request({
                     url: app.globalData.serverHttp + '/addPlace',//指向服务器地址
                     method: "post",
                     data: {
-                        nickName: res.data,
+                        nickName: app.globalData.nickName,
                         city: that.data.defaultCity
                     },
                     header: {
                         'content-type': 'Application/json'
                     },
                     success: function (res) {
-                        console.log("添加默认城市");
+                        console.log("添加默认城市", that.data.defaultCity);
                     },
                     fail: function (err) {
                         console.log(err);
                     }
                 });
-                //访问一次服务器 ---end
+                //添加城市结束
             }
-        })
-        //请求缓存结束
+        });
+
 
     },
 
