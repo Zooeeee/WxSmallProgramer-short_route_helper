@@ -1,5 +1,6 @@
 // pages/user/user.js
 import Dialog from '../../dist/dialog/dialog';
+import Toast from '../../dist/toast/toast';
 
 
 const app = getApp();
@@ -9,23 +10,24 @@ Page({
         places: [],
         deletePlaces: [],
     },
-    onLoad:function() {
+    onLoad: function () {
         wx.loadFontFace({
             family: 'kaiti',
-            source: 'url('+app.globalData.serverHttp+'/static/kaiti.ttf'+')',
+            source: 'url(' + app.globalData.serverHttp + '/static/kaiti.ttf' + ')',
             success(res) {
-              console.log(res.status)
+                console.log(res.status)
             },
-            fail: function(res) {
-              console.log(res.status)
+            fail: function (res) {
+                console.log(res.status)
             },
-            complete: function(res) {
-              console.log(res.status)
+            complete: function (res) {
+                console.log(res.status)
             }
-          });
+        });
+        wx.hideShareMenu();
     },
-    onReady:function(e){
-       
+    onReady: function (e) {
+
     },
 
     /**
@@ -34,35 +36,32 @@ Page({
     onShow: function () {
         let that = this;
         console.log("user.js的onshow函数")
-        wx.getStorage({
-            key: 'nickName',
-            success: function (res) {
-                that.setData({
-                    nickName: res.data
-                })
-            }
-        })
+        let nickName = app.globalData.nickName;
+        that.setData({
+            nickName: nickName
+        });
+
         //获取缓存信息结束
         //将请求到的palces存到data
         wx.request({
-            url: app.globalData.serverHttp+'/getAllPlace',
-            method: 'post',
-            data: { nickName: that.data.nickName },
-            success: function (res) {
-                that.setData({
-                    places: res.data,
-                    deletePlaces: []
-                })
-                console.log(that.data.places);
-            }
-        });//request -----end
-    },
-    //onShow 结束
-    //滑动单元格
-    onClose(event) {
-        let that = this;
-        const { position, instance } = event.detail;
-        switch (position) {
+                url: app.globalData.serverHttp + '/getAllPlace',
+                method: 'post',
+                data: { nickName: that.data.nickName },
+                success: function (res) {
+                    that.setData({
+                        places: res.data,
+                        deletePlaces: []
+                    })
+                    console.log(that.data.places);
+                }
+            });//request -----end
+        },
+            //onShow 结束
+            //滑动单元格
+            onClose(event) {
+                let that = this;
+                const { position, instance } = event.detail;
+                switch(position) {
             case 'left':
                 console.log("左边");
                 console.log(instance.id);
@@ -75,12 +74,12 @@ Page({
                 })
                 instance.close();
                 break;
-            case 'cell':
+                case 'cell':
                 console.log("cell");
                 console.log(instance.id);
                 instance.close();
                 break;
-            case 'right':
+                case 'right':
                 console.log("右边");
                 console.log(instance.id);
                 Dialog.confirm({
@@ -91,16 +90,17 @@ Page({
                     that.delete(instance.id);
                     console.log("instance.id", instance.id);
                     wx.request({
-                        url: app.globalData.serverHttp+'/deletePlace',
+                        url: app.globalData.serverHttp + '/deletePlace',
                         method: 'delete',
                         data: {
                             nickName: this.data.nickName,
                             deletePlace: deletePlace,
                         }
-                    })
+                    });
                     console.log(that.data.places);
                     if (that.data.places.length == 0) {
                         wx.setStorageSync('defaultCity', '北京市');
+                        Toast('已检测到您的历史记录为空,现将所在地设为北京市');
                     }
                     else {
                         wx.setStorageSync('defaultCity', that.data.places[0]);
@@ -109,7 +109,7 @@ Page({
                 });
                 instance.close();
                 break;
-        }
+            }
     },
 
     delete: function (value) {

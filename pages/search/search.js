@@ -7,29 +7,40 @@ Page({
      * 页面的初始数据
      */
     data: {
+        serverHttp: app.globalData.serverHttp,
         active1: [0],
         pickArrayIndex: 0,
         pickArray: ["生活服务", "休闲娱乐", " 健身", "旅游景点", "自然地物 ", "美食",
             " 宾馆 ", "购物 ", "汽车服务", "运动", "医疗", "交通设施"],
         imgArray: [
-            { src: "../../img/search/shenghuofuwu.png", value: "生活服务" },
-            { src: "../../img/search/yule.png", value: "休闲娱乐" },
-            { src: "../../img/search/jianshen.png", value: "健身" },
-            { src: "../../img/search/jingdian.png", value: "旅游景点" },
-            { src: "../../img/search/ziran.png", value: "自然地物" },
-            { src: "../../img/search/meishi.png", value: "美食" },
-            { src: "../../img/search/binguan.png", value: "宾馆" },
-            { src: "../../img/search/gouwu.png", value: "购物" },
-            { src: "../../img/search/qichefuwu.png", value: "汽车服务" },
-            { src: "../../img/search/yundong.png", value: "运动" },
-            { src: "../../img/search/yiliao.png", value: "医疗" },
-            { src: "../../img/search/jiaotong.png", value: "交通设施" },
+            { src: app.globalData.serverHttp + "/static/search/shenghuofuwu.png", value: "生活服务" },
+            { src: app.globalData.serverHttp + "/static/search/yule.png", value: "休闲娱乐" },
+            { src: app.globalData.serverHttp + "/static/search/jianshen.png", value: "健身" },
+            { src: app.globalData.serverHttp + "/static/search/jingdian.png", value: "旅游景点" },
+            { src: app.globalData.serverHttp + "/static/search/ziran.png", value: "自然地物" },
+            { src: app.globalData.serverHttp + "/static/search/meishi.png", value: "美食" },
+            { src: app.globalData.serverHttp + "/static/search/binguan.png", value: "宾馆" },
+            { src: app.globalData.serverHttp + "/static/search/gouwu.png", value: "购物" },
+            { src: app.globalData.serverHttp + "/static/search/qichefuwu.png", value: "汽车服务" },
+            { src: app.globalData.serverHttp + "/static/search/yundong.png", value: "运动" },
+            { src: app.globalData.serverHttp + "/static/search/yiliao.png", value: "医疗" },
+            { src: app.globalData.serverHttp + "/static/search/jiaotong.png", value: "交通设施" },
         ],
         click: 0,
-        tipsIsShow:false,
-        input:"",
-        inputIsFocus:false
+        tipsIsShow: false,
+        input: "",
+        inputIsFocus: false
     },
+    /**
+  * 用户点击右上角分享
+  */
+    onShareAppMessage: function () {
+        return {
+            title: '一起来这里溜达溜达吧~',
+            path: '/pages/search/search.wxml'
+        }
+    },
+
 
     /**
      * 生命周期函数--监听页面加载
@@ -37,17 +48,17 @@ Page({
     onLoad: function (options) {
         wx.loadFontFace({
             family: 'heiti',
-            source: 'url('+app.globalData.serverHttp+'/static/heiti.ttf'+')',
+            source: 'url(' + app.globalData.serverHttp + '/static/heiti.ttf' + ')',
             success(res) {
-              console.log(res.status)
+                console.log(res.status)
             },
-            fail: function(res) {
-              console.log(res.status)
+            fail: function (res) {
+                console.log(res.status)
             },
-            complete: function(res) {
-              console.log(res.status)
+            complete: function (res) {
+                console.log(res.status)
             }
-          });
+        });
     },
 
     /**
@@ -78,33 +89,33 @@ Page({
         });
         /////////////////////////
         //请求nickName缓存
-    wx.getStorage({
-        key: 'nickName',
-        success: function (res) {
-          console.log(res.data);
-          console.log(that.data.defaultCity);
-          //访问服务器
-          wx.request({
-            url: app.globalData.serverHttp+'/addPlace',//指向服务器地址
-            method: "post",
-            data: {
-              nickName: res.data,
-              city: that.data.defaultCity
-            },
-            header: {
-              'content-type': 'Application/json'
-            },
+        wx.getStorage({
+            key: 'nickName',
             success: function (res) {
-              console.log("添加默认城市");
-            },
-            fail: function (err) {
-              console.log(err);
+                console.log(res.data);
+                console.log(that.data.defaultCity);
+                //访问服务器
+                wx.request({
+                    url: app.globalData.serverHttp + '/addPlace',//指向服务器地址
+                    method: "post",
+                    data: {
+                        nickName: res.data,
+                        city: that.data.defaultCity
+                    },
+                    header: {
+                        'content-type': 'Application/json'
+                    },
+                    success: function (res) {
+                        console.log("添加默认城市");
+                    },
+                    fail: function (err) {
+                        console.log(err);
+                    }
+                });
+                //访问一次服务器 ---end
             }
-          });
-          //访问一次服务器 ---end
-        }
-      })
-      //请求缓存结束
+        })
+        //请求缓存结束
 
     },
 
@@ -156,17 +167,17 @@ Page({
                 if (res.data.pointList.length == 0) {
                     console.log("请求的数据长度为0");
                     that.showNotify2();//调用顶层弹出栏
-                   /*  wx.showToast({
-                        title: '没有找到该地点',
-                        icon: 'none',
-                        duration: 1500
-                    }) */
+                    /*  wx.showToast({
+                         title: '没有找到该地点',
+                         icon: 'none',
+                         duration: 1500
+                     }) */
                 }
                 else
-                that.setData({
-                    list: res.data.pointList,
-                    tipsIsShow:true
-                })
+                    that.setData({
+                        list: res.data.pointList,
+                        tipsIsShow: true
+                    })
             }
         })
 
@@ -174,7 +185,7 @@ Page({
 
     //切换选项 并执行搜索
     optionClick: function (e) {
-        console.log("点击的位置是"+e.currentTarget.dataset.text);
+        console.log("点击的位置是" + e.currentTarget.dataset.text);
         let a = e.currentTarget.dataset.text;
         this.setData({
             class: this.data.imgArray[a].value,
@@ -183,30 +194,30 @@ Page({
         this.search();
     },
     //input聚焦
-    inputFocus:function(e){
+    inputFocus: function (e) {
         this.setData({
-            inputIsFocus:!this.data.inputIsFocus
+            inputIsFocus: !this.data.inputIsFocus
         })
     },
 
     //顶层弹出栏 只在查不到时弹出
     showNotify2() {
         Notify({
-          duration: 1500,
-          text: '查不到该地点，请换个更有名的',
-          selector: '#custom-selector',
-          backgroundColor: 'red'
+            duration: 1500,
+            text: '查不到该地点，请换个更有名的',
+            selector: '#custom-selector',
+            backgroundColor: 'red'
         });
-      },
+    },
 
     //手风琴
-  //手风琴组件函数
-  onChange(event) {
-    const { key } = event.currentTarget.dataset;
-    this.setData({
-      [key]: event.detail
-    });
-  },
+    //手风琴组件函数
+    onChange(event) {
+        const { key } = event.currentTarget.dataset;
+        this.setData({
+            [key]: event.detail
+        });
+    },
 
 
 

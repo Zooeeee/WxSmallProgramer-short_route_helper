@@ -7,6 +7,7 @@ var Chart = null;
 // pages/prediction/prediction.js
 Page({
     data: {
+        serverHttp:app.globalData.serverHttp,
         defaultCity: '武汉',
         totalHelpData: [],
         totalWeatherData: [],
@@ -17,6 +18,17 @@ Page({
             lazyLoad: true // 延迟加载
         }
     },
+
+     /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '一起来这里溜达溜达吧~',
+      path: '/pages/prediction/prediction.wxml'
+    }
+  },
+
     onLoad: function (e) {
         wx.loadFontFace({
             family: 'heiti',
@@ -102,7 +114,7 @@ Page({
                         min: temps[i].min,
                         weather: weathers[i],
                         wind: winds[i],
-                        weatherIcon:weatherTrans.src(weathers[i])
+                        weatherIcon:weatherTrans.src(weathers[i],app.globalData.serverHttp)
                     })
                 };
                 let totalHelpData = [];

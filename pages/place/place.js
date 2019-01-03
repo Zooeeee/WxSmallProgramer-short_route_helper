@@ -1,36 +1,57 @@
 // pages/today/today.js
 const weatherTrans = require('../../utils/weatherTrans');
+import Toast from '../../dist/toast/toast';
 const app = getApp();
 Page({
   data: {
+    serverHttp:app.globalData.serverHttp,
     defaultCity: '',
-    iconSrc: "/img/place/GPS.png",
+    iconSrc: app.globalData.serverHttp+"/static/place/GPS.png",
     dayCount: "",
     description: "",
     abstract: "",
     itineraries: [],
     title: "",
     plan: [],
-    isShow:false
+    isShow: false
   },
 
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '一起来这里溜达溜达吧~',
+      path: '/pages/place/place.wxml'
+    }
+  },
+
+ 
+
   onLoad: function (e) {
+    if(app.globalData.nickName == null){
+      Toast.fail("未获得您的允许,您的记录不会被记录在云端")
+    }
+    else{
+      Toast.success("获得您的允许,您的记录会被记录在云端")
+    };
     wx.loadFontFace({
       family: 'heiti',
-      source: 'url('+app.globalData.serverHttp+'/static/heiti.ttf'+')',
+      source: 'url(' + app.globalData.serverHttp + '/static/heiti.ttf' + ')',
       success(res) {
         console.log(res.status)
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log(res.status)
       },
-      complete: function(res) {
+      complete: function (res) {
         console.log(res.status)
       }
     });
 
   },
   onReady: function (e) {
+   
   },
   onShow: function (e) {
     console.log("today.js中的onshow函数");
@@ -49,6 +70,26 @@ Page({
         that.setData({
           defaultCity: res.data
         });
+        //发送nickName 和 place
+        console.log("添加信息前的默认城市", that.data.defaultCity);
+        wx.request({
+          url: app.globalData.serverHttp + '/addPlace',//指向服务器地址
+          method: "post",
+          data: {
+            nickName: app.globalData.nickName,
+            city: that.data.defaultCity
+          },
+          header: {
+            'content-type': 'Application/json'
+          },
+          success: function (res) {
+            console.log("添加默认城市");
+          },
+          fail: function (err) {
+            console.log(err);
+          }
+        });
+        //访问一次服务器 ---end
         //根据defaultCity的值 去 请求api 得到预测天气数据后存入缓存区
         wx.request({
           url: 'https://api.map.baidu.com/telematics/v3/weather?output=json&ak=1a3cde429f38434f1811a75e1a90310c&location='
@@ -61,7 +102,7 @@ Page({
             let obj = e.data.results[0].weather_data[0];
             //console.log(obj);
             console.log("添加天气icon");
-            let weatherIconSrc = weatherTrans.src(obj.weather);
+            let weatherIconSrc = weatherTrans.src(obj.weather,app.globalData.serverHttp);
             that.setData({
               date: obj.date,
               temperature: obj.temperature,
@@ -97,7 +138,7 @@ Page({
                 title: "",
                 dayCount: [],
                 plan: [],
-                 isShow:false 
+                isShow: false
               })
             }
             //有出行信息
@@ -112,7 +153,7 @@ Page({
                 title: itineraries[0].description,
                 dayCount: getItineraries.getPickers(itineraries),
                 plan: itineraries[0].itineraries,
-                isShow:true
+                isShow: true
               })
             }
           }
@@ -120,34 +161,9 @@ Page({
         //请求第二个api,关于行程的结束
       },
     });//请求缓存结束
-    //请求nickName缓存
-    wx.getStorage({
-      key: 'nickName',
-      success: function (res) {
-        console.log(res.data);
-        console.log(that.data.defaultCity);
-        //访问服务器
-        wx.request({
-          url: app.globalData.serverHttp+'/addPlace',//指向服务器地址
-          method: "post",
-          data: {
-            nickName: res.data,
-            city: that.data.defaultCity
-          },
-          header: {
-            'content-type': 'Application/json'
-          },
-          success: function (res) {
-            console.log("添加默认城市");
-          },
-          fail: function (err) {
-            console.log(err);
-          }
-        });
-        //访问一次服务器 ---end
-      }
-    })
-    //请求缓存结束
+
+   
+
 
   },
 
@@ -202,13 +218,7 @@ Page({
     });
   },
 
-  onShareAppMessage: function () {    
-    return {      
-        title: '自定义分享标题', 
-        desc: '自定义分享描述',
-        path: './place.wxml'
-    }  
-  }
+  
 
 
 

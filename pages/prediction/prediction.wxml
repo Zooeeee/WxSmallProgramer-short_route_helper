@@ -34,7 +34,7 @@
     <view class="data" style="margin-top:20rpx;">
         <block wx:for="{{totalHelpData}}" wx:for-index="index" wx:key="this">
             <view class="height block border">
-                <image id="{{index}}" bindtap="clickHelp" class="icon" src="../../img/prediction/{{item.title}}.png" />
+                <image id="{{index}}" bindtap="clickHelp" class="icon" src="{{serverHttp}}/static/prediction/{{item.title}}.png" />
                 <view class="kaiti">{{item.zs}}</view>
             </view>
         </block>

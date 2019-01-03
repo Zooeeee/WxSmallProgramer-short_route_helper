@@ -1,88 +1,88 @@
 {
-    "pages": [
-        "pages/user/user",
-        "pages/welcome/welcome",
-        "pages/search/search",
-        "pages/place/place",
-        "pages/selectCity/selectCity",
-        "pages/prediction/prediction"
-    ],
-    "window": {
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
-        "navigationBarTitleText": "溜达溜达",
-        "backgroundColor": "#ff00ff",
-        "backgroundTextStyle": "light",
-        "enablePullDownRefresh": false
-    },
-    "permission": {
-        "scope.userLocation": {
-          "desc": "你的位置信息将用于生成您所在城市"
-        }
-      },
-    "tabBar": {
-        "list": [
-            {
-                "pagePath": "pages/place/place",
-                "text": "计划",
-                "iconPath": "img/tarBar/place.png",
-                "selectedIconPath": "img/tarBar/place-select.png"
-            },
-            {
-                "pagePath": "pages/search/search",
-                "text": "搜索",
-                "iconPath": "img/tarBar/search.png",
-                "selectedIconPath": "img/tarBar/search-select.png"
-            },
-            {
-                "pagePath": "pages/prediction/prediction",
-                "text": "近期预测",
-                "iconPath": "img/tarBar/predict.png",
-                "selectedIconPath": "img/tarBar/predict-select.png"
-            },
-            {
-                "pagePath": "pages/user/user",
-                "text": "个人历史",
-                "iconPath": "img/tarBar/history.png",
-                "selectedIconPath": "img/tarBar/history-select.png"
-            }
-        ]
-    },
-    "usingComponents": {
-        "van-button": "../../dist/button/index",
-        "van-cell": "../../dist/cell/index",
-        "van-cell-group": "../../dist/cell-group/index",
-        "van-dialog": "../../dist/dialog/index",
-        "van-field": "../../dist/field/index",
-        "van-icon": "../../dist/icon/index",
-        "van-notice-bar": "../../dist/notice-bar/index",
-        "van-notify": "../../dist/notify/index",
-        "van-panel": "../../dist/panel/index",
-        "van-popup": "../../dist/popup/index",
-        "van-progress": "../../dist/progress/index",
-        "van-radio": "../../dist/radio/index",
-        "van-radio-group": "../../dist/radio-group/index",
-        "van-row": "../../dist/row/index",
-        "van-search": "../../dist/search/index",
-        "van-slider": "../../dist/slider/index",
-        "van-stepper": "../../dist/stepper/index",
-        "van-steps": "../../dist/steps/index",
-        "van-submit-bar": "../../dist/submit-bar/index",
-        "van-swipe-cell": "../../dist/swipe-cell/index",
-        "van-switch": "../../dist/switch/index",
-        "van-switch-cell": "../../dist/switch-cell/index",
-        "van-tab": "../../dist/tab/index",
-        "van-tabs": "../../dist/tabs/index",
-        "van-tabbar": "../../dist/tabbar/index",
-        "van-tabbar-item": "../../dist/tabbar-item/index",
-        "van-tag": "../../dist/tag/index",
-        "van-toast": "../../dist/toast/index",
-        "van-transition": "../../dist/transition/index",
-        "van-tree-select": "../../dist/tree-select/index",
-        "van-datetime-picker": "../../dist/datetime-picker/index",
-        "van-rate": "../../dist/rate/index",
-        "van-collapse": "../../dist/collapse/index",
-        "van-collapse-item": "../../dist/collapse-item/index",
-        "van-picker": "../../dist/picker/index"
+  "pages": [
+    "pages/welcome/welcome",
+    "pages/user/user",
+    "pages/search/search",
+    "pages/place/place",
+    "pages/selectCity/selectCity",
+    "pages/prediction/prediction"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "溜达溜达",
+    "backgroundColor": "#ff00ff",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于生成您所在城市"
     }
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/place/place",
+        "text": "计划",
+        "iconPath": "/img/tarBar/place.png",
+        "selectedIconPath": "img/tarBar/place-select.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "img/tarBar/search.png",
+        "selectedIconPath": "img/tarBar/search-select.png"
+      },
+      {
+        "pagePath": "pages/prediction/prediction",
+        "text": "近期预测",
+        "iconPath": "img/tarBar/predict.png",
+        "selectedIconPath": "img/tarBar/predict-select.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人历史",
+        "iconPath": "img/tarBar/history.png",
+        "selectedIconPath": "img/tarBar/history-select.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "../../dist/button/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-dialog": "../../dist/dialog/index",
+    "van-field": "../../dist/field/index",
+    "van-icon": "../../dist/icon/index",
+    "van-notice-bar": "../../dist/notice-bar/index",
+    "van-notify": "../../dist/notify/index",
+    "van-panel": "../../dist/panel/index",
+    "van-popup": "../../dist/popup/index",
+    "van-progress": "../../dist/progress/index",
+    "van-radio": "../../dist/radio/index",
+    "van-radio-group": "../../dist/radio-group/index",
+    "van-row": "../../dist/row/index",
+    "van-search": "../../dist/search/index",
+    "van-slider": "../../dist/slider/index",
+    "van-stepper": "../../dist/stepper/index",
+    "van-steps": "../../dist/steps/index",
+    "van-submit-bar": "../../dist/submit-bar/index",
+    "van-swipe-cell": "../../dist/swipe-cell/index",
+    "van-switch": "../../dist/switch/index",
+    "van-switch-cell": "../../dist/switch-cell/index",
+    "van-tab": "../../dist/tab/index",
+    "van-tabs": "../../dist/tabs/index",
+    "van-tabbar": "../../dist/tabbar/index",
+    "van-tabbar-item": "../../dist/tabbar-item/index",
+    "van-tag": "../../dist/tag/index",
+    "van-toast": "../../dist/toast/index",
+    "van-transition": "../../dist/transition/index",
+    "van-tree-select": "../../dist/tree-select/index",
+    "van-datetime-picker": "../../dist/datetime-picker/index",
+    "van-rate": "../../dist/rate/index",
+    "van-collapse": "../../dist/collapse/index",
+    "van-collapse-item": "../../dist/collapse-item/index",
+    "van-picker": "../../dist/picker/index"
+  }
 }

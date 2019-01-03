@@ -23,7 +23,7 @@ page {
    /*  background-color: wheat; */
     display: flex;
     justify-content:center;
-    background: url('https://upload-images.jianshu.io/upload_images/11628766-e2256d2cd3cc13b5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240') no-repeat;
+    background: url('http://127.0.0.1:3000/static/background.png') no-repeat;
     background-size:100% 100%;  
 
 }

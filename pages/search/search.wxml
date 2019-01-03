@@ -3,7 +3,7 @@
 <view class="top">
     <view class="defaultCity">
         <navigator url="../selectCity/selectCity">
-            <image src="../../img/place/gps.png" />
+            <image src="{{serverHttp}}/static/place/gps.png" />
             <text >{{defaultCity}}</text>
         </navigator>
     </view>

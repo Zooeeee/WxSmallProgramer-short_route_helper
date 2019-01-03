@@ -3,9 +3,9 @@
   <view class="top-up ">
     <label>
       <navigator url="../selectCity/selectCity">
-        <image src="../../img/place/gps.png" />
+        <image src="{{serverHttp}}/static/place/gps.png" />
         <text >{{defaultCity}}</text>
-        <image src="../../img/place/downSelect.png" />
+        <image src="{{serverHttp}}/static/place/downSelect.png" />
       </navigator>
     </label>
     <view>
@@ -42,3 +42,4 @@
   </van-tabs>
 </view>
 <view class="foot"></view>
+<van-toast id="van-toast" />

@@ -1,14 +1,23 @@
 const app = getApp();
 Page({
   data: {
+    serverHttp:app.globalData.serverHttp
   },
   onLoad: function (options) {
   },//onLoad结束
+
+   /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '一起来这里溜达溜达吧~',
+      path: '/pages/welcome/welcome.wxml'
+    }
+  },
+
   bindGetUserInfo(e) {
-    this.getLocation();
     let that = this;
-    // 查看是否授权
-    ///
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
@@ -18,55 +27,35 @@ Page({
               //console.log(res.userInfo);
               let nickName = res.userInfo.nickName;
               console.log('getSetting：nickName', nickName)
+              app.globalData.nickName = nickName;
+              //添加登录信息
+              wx.request({
+                url: app.globalData.serverHttp + '/nickName',
+                method: "post",
+                data: {
+                  nickName: app.globalData.nickName
+                }
+              });
+              console.log("全局信息nickName", app.globalData.nickName);
+            },
+            fail(res){
+              console.log("未授权");
+              app.globalData.nickName = null;
+              console.log("全局信息nickName", app.globalData.nickName);
             }
           })//getUserInfo ---end
         }
-      }
+        else {
+          console.log("未授权");
+          app.globalData.nickName = null;
+          console.log("全局信息nickName", app.globalData.nickName);
+        }
+      },
     });
-     // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-     wx.getUserInfo({
-      success(res) {
-        //console.log(res.userInfo);
-        let nickName = res.userInfo.nickName;
-        console.log('getSetting：nickName', nickName)
-        wx.setStorage({
-          key:'nickName',
-          value:nickName
-        })
-      }
-    })//getUserInfo ---end
-    //授权结束
-    //访问一次服务器 把nickName发到服务器
-    ///
+   
 
-    console.log('用户信息:', e.detail.userInfo);
-    this.setData({
-      url: e.detail.userInfo.avatarUrl
-    });
-    //获取地理信息
+
     this.getLocation();
-    //访问服务器
-    wx.request({
-      url: app.globalData.serverHttp + '/nickName',//指向服务器地址
-      method: "post",
-      data: {
-        nickName: that.data.nickName
-      },
-      header: {
-        'content-type': 'Application/json'
-      },
-      success: function (res) {
-        console.log("访问服务器成功");
-      }
-    });
-    //访问一次服务器 ---end
-    console.log("访问服务器之后此处的昵称" + that.data.nickName);
-    wx.setStorage({//往缓存中放nickName
-      key: 'nickName',
-      data: that.data.nickName
-    });//
-
-    /*   wx.setStorageSync('nickName',that.data.nickName); */
   },
 
 
@@ -80,6 +69,17 @@ Page({
         var longitude = res.longitude
         var latitude = res.latitude
         that.loadCity(longitude, latitude)
+      },
+      fail:function(res){
+        console.log("获取地理授权失败");
+        wx.setStorage({
+          key: "defaultCity",
+          data: '北京市'
+        });
+        wx.switchTab({
+          url: '../place/place'
+        });
+        
       }
     })
   },
@@ -102,10 +102,14 @@ Page({
         // 跳转到tabBar页面（在app.json中注册过的tabBar页面），同时关闭其他非tabBar页面。
         wx.switchTab({
           url: '../place/place'
-        })
+        });
+
       },
       fail: function () {
-        console.log("转换微信所得信息失败")
+        console.log("转换微信所得信息失败,请重试");
+        wx.switchTab({
+          url: '../place/place'
+        });
       },
     })
   },
