@@ -1,0 +1,81 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.3",
+	"appid": "wx27c88850a98514b4",
+	"projectname": "Demo",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": -1,
+					"name": "welcom",
+					"pathName": "pages/welcome/welcome",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "place",
+					"pathName": "pages/place/place",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "prediction",
+					"pathName": "pages/prediction/prediction",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "search",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "user",
+					"pathName": "pages/user/user",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "test",
+					"pathName": "pages/test/test",
+					"query": ""
+				}
+			]
+		}
+	}
+}

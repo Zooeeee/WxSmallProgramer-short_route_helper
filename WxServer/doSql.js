@@ -45,18 +45,8 @@ let addUserCity = (nickName, city) => {
     });
 };
 
-//获得userplace表中的所有地点值
-let getAllPlace = (nickName, res) => {
-    let sql = 'select * from user_place where nickName = ?';
-    let sqlParameter = nickName;
-    easy_mysql.get_all(sql, sqlParameter, function (err, results) {
-        let array = [];
-        results.forEach(element => {
-            array.push(element.place);
-        });
-        res.send(array);
-    })
-};
+
+
 //删除userplace表中的某些值
 let deletePlace = (nickName, deletePlace) => {
     let sql = `DELETE FROM user_place WHERE nickName = ? and place = ? `;
@@ -69,6 +59,21 @@ let deletePlace = (nickName, deletePlace) => {
     })
 
 };
+
+//获得userplace表中的所有地点值
+let getAllPlace = (nickName, res) => {
+    let sql = 'select * from user_place where nickName = ?';
+    let sqlParameter = nickName;
+    easy_mysql.get_all(sql, sqlParameter, function (err, results) {
+        let array = [];
+        results.forEach(element => {
+            array.push(element.place);
+        });
+        console.log(array)
+       res.send(array);
+    })
+};
+
 
 
 

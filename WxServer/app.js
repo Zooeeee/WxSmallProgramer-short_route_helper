@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({            //此项必须在 bodyParser.json 下
 }));
 
 app.use('/static', express.static('font'));
+app.use('/static', express.static('img'));
 
 
 app.get('/', (req, res) => {
@@ -36,9 +37,10 @@ app.post('/addPlace', (req, res) => {
 
 app.post('/getAllplace', (req, res) => {
 	console.log("-------getAllPlace-----------");
-	doSql.getAllPlace('Zoe',res);
+	console.log("收到的数据:",req.body.nickName);
+	doSql.getAllPlace(req.body.nickName,res);
 })
-//添加历史地点 ----end
+//获取所有地点 ----end
 
 app.delete('/deletePlace',(req,res)=>{
 	console.log("delete收到的数据",req.body);

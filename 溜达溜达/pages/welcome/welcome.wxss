@@ -1,0 +1,70 @@
+/* pages/index/index.wxss */
+/* 淡入动画 */
+@keyframes fade-in {  
+    0% {opacity: 0;}/*初始状态 透明度为0*/  
+    20% {opacity: 0.2;} 
+    40% {opacity: 0.4;}
+    60% {opacity: 0.6;}
+    80% {opacity: 0.8;}
+    100% {opacity: 1;}/*结束状态 透明度为1*/  
+    
+}  
+
+/* 上升动画 */
+@keyframes sport
+{
+0%   {top:0px;}
+100% {top:-400rpx;}
+}
+
+page {
+    height: 100%;
+    width: 100%;
+   /*  background-color: wheat; */
+    display: flex;
+    justify-content:center;
+    background: url('http://127.0.0.1:3000/static/background.png') no-repeat;
+    background-size:100% 100%;  
+
+}
+
+.container{
+    display: flex;
+    justify-content:center;
+    align-items:Center;
+}
+.one{
+    margin-top: 500rpx;
+    animation: sport 1.5s;
+    position:relative;
+    animation-fill-mode :forwards;
+}
+
+
+.img{
+    height: 200rpx;
+    width: 200rpx;
+}
+
+.btn{ 
+    margin-top: 200rpx;
+    border-radius: 25rpx;
+    width: 150px; /* 宽度 */
+    height: 60px; /* 高度 */
+    line-height: 110rpx;
+    outline: none; /* 不显示轮廓线 */
+    font-size: 19px; /* 字体大小 */
+    font-family: Microsoft YaHei; /* 设置字体 */
+    background-color: rgba(255,255,255,0.9);
+   /*  border: 1px solid #000000; */
+    animation: fade-in;/*动画名称*/  
+    animation-duration:1.5s;/*动画持续时间*/   
+}
+
+
+.btn p {
+  /*   border: 1px solid #000000; */
+    position: relative;
+    color: black;
+}
+

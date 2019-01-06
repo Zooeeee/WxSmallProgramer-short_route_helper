@@ -1,0 +1,90 @@
+/* pages/today/today.wxss */
+page{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.heiti{
+    font-family: 'heiti';
+}
+
+.top{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    
+}
+.top view{
+    font-size: 30rpx;
+      
+    }
+.top-up {
+    height: 90rpx;
+    background-color: #ff5f00;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:space-around;
+    align-items:center;
+    color:white;
+}
+.top image{
+    height: 40rpx;
+    width: 40rpx;
+}
+
+.top navigator{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.weather{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+}
+.weather image{
+    height: 250rpx;
+    width: 250rpx;
+}
+.weather view{
+    font-size: 35rpx;
+}
+.date{
+    margin-top:30rpx;
+    text-align:center;
+    font-size:40rpx;
+}
+
+.description{
+    width: 92%;
+    display: flex;
+    flex-direction: column;  
+    justify-content:center;
+    align-items:center;
+}
+
+
+.selectData{
+    display: flex;
+    flex-direction: row;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.content {
+    padding: 20px;
+    background-color: #fff;
+  }
+

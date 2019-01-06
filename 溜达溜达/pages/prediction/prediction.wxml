@@ -1,0 +1,44 @@
+<view class="container">
+    <view class="data kaiti" style="margin-top:30rpx;">
+        <block wx:for="{{dates}}" wx:for-index="index" wx:key="this">
+            <view class="block">
+                <view>{{item.weekday}}</view>
+                <view>{{item.day}}日</view>
+            </view>
+        </block>
+    </view>
+    <view class="data" style="margin-top:30rpx;">
+        <block wx:for="{{totalWeatherData}}" wx:for-index="index" wx:key="this">
+            <view class="height" hover-class="none" hover-stop-propagation="false">
+                <view class="height">
+                    <image class="icon" src="{{item.weatherIcon}}" />
+                    <text class="kaiti weather">{{item.weather}}</text>
+                </view>
+                <view class="block heiti ">
+                    {{item.max}}
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="canvas">
+        <ec-canvas id="mychart" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+    </view>
+    <view class="data">
+        <block wx:for="{{totalWeatherData}}" wx:for-index="index" wx:key="this">
+            <view class="block">
+                <view class="heiti">{{item.min}}</view>
+                <view class="kaiti weather">{{item.wind}}</view>
+            </view>
+        </block>
+    </view>
+    <view class="data" style="margin-top:20rpx;">
+        <block wx:for="{{totalHelpData}}" wx:for-index="index" wx:key="this">
+            <view class="height block border">
+                <image id="{{index}}" bindtap="clickHelp" class="icon" src="{{serverHttp}}/static/prediction/{{item.title}}.png" />
+                <view class="kaiti">{{item.zs}}</view>
+            </view>
+        </block>
+    </view>
+</view>
+
+<van-dialog id="van-dialog" />

@@ -1,0 +1,10 @@
+.foot{  
+    background: white;
+    margin: 20px auto;
+    width: 100%;
+    padding:20px;
+    border-radius: 2px 2px 2px 2px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}

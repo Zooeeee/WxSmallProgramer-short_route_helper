@@ -1,0 +1,47 @@
+<!-- pages/today/today.wxml -->
+<view class="top heiti">
+  <view class="top-up ">
+    <label>
+      <navigator url="../selectCity/selectCity">
+        <image src="{{serverHttp}}/static/place/gps.png" />
+        <text >{{defaultCity}}</text>
+        <image src="{{serverHttp}}/static/place/downSelect.png" />
+      </navigator>
+    </label>
+    <view>
+      <text >温度:{{temperature}}</text>
+    </view>
+  </view>
+  <view class="date heiti">{{date}}</view>
+</view>
+<view class="weather  heiti">
+  <image src="{{weatherIconSrc}}" />
+  <view>{{weather}}</view>
+</view>
+<view class="description">
+  <van-cell title="{{defaultCity}}" is-link arrow-direction="down" value="" icon="location-o" label="{{abstract}}" size="large" border="{{ false }}" bindtap="clickAbstract" />
+</view>
+<view class="body" wx:if="{{isShow}}">
+  <van-tabs type="card" bind:click="tabsOnClick" swipeable>
+    <van-cell title="大纲" value="" icon="flag-o" label="{{title}}" border="{{ false }}" />
+    <van-tab wx:for="{{dayCount}}" wx:key="index" title="{{dayCount[index]}}">
+      <view class="content  ">
+        <van-collapse value="{{ active2 }}" data-key="active2" accordion bind:change="onChange">
+          <block wx:for="{{plan}}" wx:for-index="index" wx:key="this">
+            <van-collapse-item title="第{{index+1}}天">
+              <view bindtap="routeHelp" id="{{index}}">
+                <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;</text>
+                {{item.description}}
+                <van-icon name="more-o" />
+              </view>
+            </van-collapse-item>
+          </block>
+        </van-collapse>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+<view class="foot"></view>
+
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

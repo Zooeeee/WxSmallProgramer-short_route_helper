@@ -1,0 +1,126 @@
+page{
+   text-align: center;
+   padding: 0;
+   font-family: 'heiti';
+}
+.heiti{
+    font-family: 'heiti';
+}
+
+
+.top{
+    text-align:center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.top image{
+    width: 43rpx;
+    height: 43rpx;
+}
+.defaultCity{
+    height: 80rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    background-color: #ff5f00;
+    color: white;
+    width: 95%;
+    border-radius: 25rpx;
+}
+
+
+.search{
+    margin-top:10rpx;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    border-radius: 5px;
+}
+.search input{
+    text-align: left;
+    width: 400rpx;
+    border: 1px solid rgb(207, 200, 200) ;
+    background-color: white;
+}
+
+
+.focus{
+    outline: 0;
+    border: 1px solid #99ccff ;
+    box-shadow: 0px 0px 10px 0px #99ccff;
+}
+
+.tips{
+    text-align: right;
+    color: #2ab4ff;
+    font-size: 30rpx;
+    margin-right: 30rpx;
+}
+
+.option{
+    width: 80%;
+    display: flex;
+    height: 280px;
+	flex-direction: row;
+    margin-top:20rpx;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    border-radius: 20rpx;
+}
+
+
+
+.oneOption{
+    display: flex;
+    flex-direction: column; 
+    margin: 25rpx 15rpx 25rpx 15rpx;
+    width:120rpx;
+    height: 120rpx;
+    align-items: center;
+}
+
+.oneOptionImg{
+    width:100rpx;
+    height:100rpx;
+}
+.oneOptionImgClick{
+    width:120rpx;
+    height:120rpx;
+    border-radius: 20rpx;
+}
+.oneOptionPClick{
+    color:  #2ab4ff;
+    font-size: 35rpx;
+}
+
+
+.oneOption p{
+    margin: 0;
+    font-size: 30rpx;
+}
+
+
+
+.body{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.oneResult{
+    text-align: left;
+    margin-top: 20rpx;
+    border: #000000 1px solid;
+    border-radius: 15rpx;
+    width: 100%;
+    font-family:"楷体";
+    font-size:50rpx;
+    background-color: #eee2e2;
+    box-shadow:5px 2px 6px #000;
+}
+

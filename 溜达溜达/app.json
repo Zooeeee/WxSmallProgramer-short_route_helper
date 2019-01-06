@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/welcome/welcome",
+    "pages/user/user",
+    "pages/search/search",
+    "pages/place/place",
+    "pages/selectCity/selectCity",
+    "pages/prediction/prediction"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "溜达溜达",
+    "backgroundColor": "#ff00ff",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于生成您所在城市"
+    }
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/place/place",
+        "text": "计划",
+        "iconPath": "/img/tarBar/place.png",
+        "selectedIconPath": "img/tarBar/place-select.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "img/tarBar/search.png",
+        "selectedIconPath": "img/tarBar/search-select.png"
+      },
+      {
+        "pagePath": "pages/prediction/prediction",
+        "text": "近期预测",
+        "iconPath": "img/tarBar/predict.png",
+        "selectedIconPath": "img/tarBar/predict-select.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人历史",
+        "iconPath": "img/tarBar/history.png",
+        "selectedIconPath": "img/tarBar/history-select.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "../../dist/button/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-dialog": "../../dist/dialog/index",
+    "van-icon": "../../dist/icon/index",
+    "van-notify": "../../dist/notify/index",
+    "van-swipe-cell": "../../dist/swipe-cell/index",
+    "van-tab": "../../dist/tab/index",
+    "van-tabs": "../../dist/tabs/index",
+    "van-toast": "../../dist/toast/index",
+    "van-collapse": "../../dist/collapse/index",
+    "van-collapse-item": "../../dist/collapse-item/index"
+  }
+}
